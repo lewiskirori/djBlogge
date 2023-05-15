@@ -1,0 +1,312 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="djBlogge An Exquisite All-Round Blogging Hub" name="description">
+    <meta content="" name="keywords">
+    <link rel="icon" href="{% static 'djB.png' %}" type="image/x-icon">
+    <title>djBlogge | The Exquisite All-Round Blogging Hub</title>
+
+    {% include 'snippets/header.htm' %}
+
+    <style type="text/css">
+        .main {
+        min-height: 100vh;
+        height: 100%;
+        }
+
+        body.dark-mode {
+        background-color: #212529;
+        color: #f5f5f5;
+        }
+
+        .theme-switcher {
+        position: fixed;
+        bottom: 15px;
+        right: 6px;
+        z-index: 9999;
+        }
+
+        .theme-button {
+        position: relative;
+        font-size: 16px;
+        padding: 10px 12px;
+        background-color: rgba(0, 123, 255, 0.3);
+        color: #f5f5f5;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: all 0.3s ease;
+        }
+
+        .theme-button:hover {
+        background-color: rgba(0, 123, 255, 0.4);
+        border: none;
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in-out;
+        }
+
+        .theme-button i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        }
+
+        .theme-button .fa-sun {
+        color: #fff;
+        }
+
+        .theme-button .fa-moon {
+        color: #222;
+        }
+
+        .invert-color {
+        filter: invert(1);
+        }
+
+        #preloader {
+           position: fixed;
+           top: 0;
+           left: 0;
+           right: 0;
+           bottom: 0;
+           z-index: 9999;
+           overflow: hidden;
+           background: #fff;
+         }
+         
+         #preloader:before {
+           content: "";
+           position: fixed;
+           top: calc(50% - 30px);
+           left: calc(50% - 30px);
+           border: 6px solid #212529;
+           border-top-color: #fff;
+           border-bottom-color: #fff;
+           border-radius: 50%;
+           width: 60px;
+           height: 60px;
+           animation: animate-preloader 1s linear infinite;
+         }
+         
+         @keyframes animate-preloader {
+           0% {
+             transform: rotate(0deg);
+           }
+         
+           100% {
+             transform: rotate(360deg);
+           }
+         }
+
+        .back-to-top-btn {
+        position: fixed;
+        bottom: 80px;
+        border: 1px solid transparent;
+        right: 20px;
+        z-index: 1;
+        display: none;
+        padding: 5px 10px;
+        background-color: #2e3339;
+        color: #f5f5f5;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        transform: scale(1.1);
+        }
+
+        .back-to-top-btn:active {
+        border: 1px solid #2e3339;
+        color: #2e3339;
+        background-color: #f5f5f5;
+        transition: transform 0.2s ease-in-out;        
+        } 
+
+        .back-to-top-btn.show {
+        display: block;
+        opacity: 1;
+        }
+
+        .back-to-top-btn.hide {
+        opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+          .back-to-top-btn {
+            bottom: 80px;
+            right: 10px;
+          }
+        }
+    </style>
+    
+    <script>
+     // Scroll to top
+     var backToTopBtn = document.querySelector(".back-to-top-btn");
+
+     window.addEventListener("scroll", function() {
+       if (window.pageYOffset > 300) { // Show back to top button after scrolling down 300px
+         backToTopBtn.style.display = "block";
+       } else {
+         backToTopBtn.style.display = "none";
+       }
+     });
+
+     backToTopBtn.addEventListener("click", function() {
+       smoothScroll("#top", 1000);
+     });
+
+     function smoothScroll(target, duration) {
+       var target = document.querySelector(target);
+       var targetPosition = target.getBoundingClientRect().top;
+       var startPosition = window.pageYOffset;
+       var distance = targetPosition - startPosition;
+       var startTime = null;
+
+       function animation(currentTime) {
+         if (startTime === null) startTime = currentTime;
+         var timeElapsed = currentTime - startTime;
+         var run = ease(timeElapsed, startPosition, distance, duration);
+         window.scrollTo(0, run);
+         if (timeElapsed < duration) requestAnimationFrame(animation);
+       }
+
+       function ease(t, b, c, d) {
+         t /= d / 2;
+         if (t < 1) return c / 2 * t * t + b;
+         t--;
+         return -c / 2 * (t * (t - 2) - 1) + b;
+       }
+
+       requestAnimationFrame(animation);
+     }
+   </script>
+  </head>
+
+  <body>
+    <div class="main">
+      {% block content %}
+
+      {% endblock content %}
+    </div>
+
+    <!-- Theme switcher -->
+    <div class="theme-switcher">
+        <button class="theme-button" onclick="toggleTheme()">
+          <i class="fas fa-sun" title="Light Mode"></i>
+          <i class="fas fa-moon" title="Dark Mode"></i>
+        </button>
+    </div>
+
+    <!-- Page loader -->
+    <div id="preloader"></div>
+    
+    <!-- Scroll top -->
+    <button class="back-to-top-btn" title="Back To Top">
+      <a class="fas fa-chevron-up"></a>
+    </button>
+    
+    {% include 'snippets/footer.htm' %}
+
+    <script type="text/javascript">
+        // Color theme
+        function toggleTheme() {
+          var body = document.getElementsByTagName("body")[0];
+          body.classList.toggle("dark-mode");
+      
+          var button = document.querySelector(".theme-button");
+          var sun = document.querySelector(".fa-moon");
+          var moon = document.querySelector(".fa-sun");
+      
+          if (body.classList.contains("dark-mode")) {
+            sun.style.display = "none";
+            moon.style.display = "inline-block";
+            invertFontColor("dark");
+            localStorage.setItem("theme", "dark");
+          } else {
+            moon.style.display = "none";
+            sun.style.display = "inline-block";
+            invertFontColor("light");
+            localStorage.setItem("theme", "light");
+          }
+        }
+      
+        function invertFontColor(theme) {
+          var elements = document.querySelectorAll(".invert-color");
+          for (var i = 0; i < elements.length; i++) {
+            if (theme === "dark") {
+              elements[i].style.color = "#f5f5f5";
+            } else {
+              elements[i].style.color = "#000";
+            }
+          }
+        }
+
+        // Check for theme preference on load
+        var theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+          var body = document.getElementsByTagName("body")[0];
+          body.classList.add("dark-mode");
+          var button = document.querySelector(".theme-button");
+          var sun = document.querySelector(".fa-moon");
+          var moon = document.querySelector(".fa-sun");
+          sun.style.display = "none";
+          moon.style.display = "inline-block";
+          invertFontColor("dark");
+        }
+
+        // Page loader
+         document.addEventListener("DOMContentLoaded", () => {
+             const preloader = document.querySelector("#preloader");
+             if (preloader) {
+                 preloader.classList.add("hide");
+                 setTimeout(() => {
+                     preloader.remove();
+                 }, 1000);
+             }
+         });
+
+        // Scroll top
+        var backToTopBtn = document.querySelector(".back-to-top-btn");
+        
+        window.addEventListener("scroll", function() {
+          if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add("show");
+          } else {
+            backToTopBtn.classList.remove("show");
+          }
+        });
+        
+        backToTopBtn.addEventListener("click", function() {
+          scrollTop(1000);
+        });
+        
+        function scrollTop(duration) {
+          var position = window.pageYOffset;
+          var startingTime = null;
+          
+          function animation(currentTime) {
+            if (startingTime === null) startingTime = currentTime;
+            var timeElapsed = currentTime - startingTime;
+            var run = ease(timeElapsed, position, -position, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+          }
+          
+          function ease(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+          }
+          
+          requestAnimationFrame(animation);
+        }
+      </script>      
+  </body>
+</html>

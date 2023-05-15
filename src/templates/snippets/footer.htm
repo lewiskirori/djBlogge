@@ -1,0 +1,43 @@
+<style type="text/css">
+    .footer {
+        background-color: #2e3339;
+        color: #fff;
+        font-size: 14px;
+        min-height: 100px;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .footer hr {
+        border: 0;
+        border-top: 1px solid #555;
+        margin: 10px 0;
+    }
+
+    .footer p {
+        font-family:"Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+        margin-top: 20px;
+    }
+</style>
+
+<!-- Footer -->
+<div class="footer">
+    <hr>
+    <!--<p><span><strong>djBlogge</strong> &copy; 2020-<span id="current_year"></span> | All rights reserved.</span></p>-->
+    <p><span>&copy; 2020-<span id="current_year"></span> djBlogge, Inc. | All rights reserved</span></p>
+</div>
+
+<script>
+    var currentYear = new Date().getFullYear();
+    var currentYearElem = document.getElementById('current_year');
+    if (currentYear && currentYear >= 2020) {
+        currentYearElem.innerHTML = currentYear;
+    } else {
+        currentYearElem.innerHTML = 'Present';
+    }
+</script>
+<!-- End Footer -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>

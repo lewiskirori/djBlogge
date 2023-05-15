@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>Sign Up - djBlogge</title>
+</head>
+
+{% extends 'base.htm' %}
+
+{% load static %}
+
+{% block content %}
+
+<style text="text/css">
+    .h3, h6{
+    text-align: center;
+    }
+
+    h6 {
+    font-family: Roboto, Arial, sans-serif;
+    }
+
+    body {
+    background-color: #f5f5f5;
+    font-family: Roboto, Arial, sans-serif;
+    }
+    
+    .form-signin {
+    max-width: 330px;
+    padding: 15px;
+    }
+
+    .form-signin .form-floating:focus-within {
+    z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="text"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    }
+    
+    .form-floating {
+    position: relative;
+    color: #bbb;
+    }
+    
+    .form-floating input {
+    padding-right: 40px;
+    }
+
+    .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    }
+
+    .password-toggle:before {
+    content: "\f06e";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 20px;
+    color: #bbb;
+    }
+
+    .password-toggle.show:before {
+    content: "\f070";
+    color: rgba(0, 123, 255, 0.5);
+    }
+
+    button {
+		background-color: #2e3339;
+    color: #f5f5f5;
+		font-weight: 600;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    transition: all 0.1s ease-in-out;
+		}
+
+    @keyframes glow {
+        0% {
+          box-shadow: none;
+        }
+        50% {
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+        100% {
+          box-shadow: none;
+        }
+    }
+
+    button:focus {
+    animation: glow 1s ease-in-out infinite;
+    }
+
+    .fa-spin-pulse {
+    color: #fff;
+    }
+
+    .login-link {
+    color: #007bff;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0;
+    position: relative;
+    font-size: 97%;
+    font-weight: 600;
+    }
+
+    .text-center {
+      font-size: 90%;
+    }
+
+    .login-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease-in-out;
+    }
+
+    .login-link:hover::before {
+    width: 100%;
+    }
+</style>
+
+<main class="form-signin w-100 m-auto">
+    <form method="POST" onsubmit="submitButton.disabled = true; submitButton.innerHTML = '<i class=\'spinner-border spinner-border-sm\'></i>';">{% csrf_token %}
+      <!-- <div class="h3 fw-normal">
+        <img src="{% static 'dB_icon_1.ico' %}" alt="djBlogge - Sign Up" width="72" height="57">
+      </div> -->
+
+      <h1 class="h3 mb-3 fw-normal">Create your account</h1>
+      <h6>Sign Up to Exquisite Blogging today!</h6>
+  
+      <div class="form-floating">
+        <input type="email" name="email" class="form-control" id="floatingInput" required="required" placeholder="name@example.com" value="{{ registration_form.email.value|default:'' }}" autocomplete="email">
+        <label for="floatingInput">Email Address</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" name="username" class="form-control" id="floatingInput" required="required" maxlength="11" placeholder="Username" value="{{ registration_form.username.value|default:'' }}" autocomplete="username">
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" name="password1" class="form-control" id="password-input1" required="required" placeholder="Password" maxlength="25">
+        <label for="password-input1">Password</label>
+        <span toggle="#password-input1" class="password-toggle"></span>
+      </div>
+      <div class="form-floating">
+        <input type="password" name="password2" class="form-control" id="password-input2" required="required" placeholder="Confirm Password" maxlength="25">
+        <label for="password-input2">Confirm Password</label>
+        <span toggle="#password-input2" class="password-toggle"></span>
+      </div>
+      <script>
+        $(document).ready(function () {
+            $('.password-toggle').on('mousedown touchstart', function () {
+                const passwordInput1 = $($(this).attr('toggle'));
+                $(this).addClass('show');
+                passwordInput1.attr('type', 'text');
+            }).on('mouseup touchend', function () {
+                const passwordInput1 = $($(this).attr('toggle'));
+                $(this).removeClass('show');
+                if (!$(this).hasClass('show')) {
+                    passwordInput1.attr('type', 'password');
+                }
+            });
+        });
+        $(document).ready(function () {
+            $('.password-toggle').on('mousedown touchstart', function () {
+                const passwordInput2 = $($(this).attr('toggle'));
+                $(this).addClass('show');
+                passwordInput2.attr('type', 'text');
+            }).on('mouseup touchend', function () {
+                const passwordInput2 = $($(this).attr('toggle'));
+                $(this).removeClass('show');
+                if (!$(this).hasClass('show')) {
+                    passwordInput2.attr('type', 'password');
+                }
+            });
+        });
+      </script>                
+        {% for field in registration_form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% if registration_form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ registration_form.non_field_errors }}
+            </div>
+        {% endif %}
+        {% if form.success %}
+            <div class="alert alert-success" role="alert">
+                <i class="fas fa-check-circle"></i> {{ form.success }}
+            </div>
+        {% endif %}
+        <div>
+          <button class="w-100" type="submit" name="submitButton">
+              Get Started
+          </button>
+        </div>
+        <hr class="my-4" style="width: 80%;margin: 0 auto;height: 2px;">
+
+        <div class="text-center">
+          Already have an account? <a href="{% url 'login' %}?next=/&login=true&nis=true&" class="login-link">Log in here</a>
+        </div>
+    </form>
+</main>  
+    
+{% endblock content %}
