@@ -1,0 +1,55 @@
+{% extends 'base.htm' %}
+
+{% block content %}
+
+<style>
+.container {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.m-auto {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.buttn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2e3339;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.buttn:hover {
+    color: #fff;
+}
+
+</style>
+<div class="container">
+    <div class="d-flex flex-column">
+        <p class="m-auto" style="font-size: 20px; color: #333;">
+            This page requires authentication to ensure your privacy and security.
+        </p>
+        <p class="m-auto" style="font-size: 16px; color: #666;">
+            Please sign in or create an account to access the full content and personalized features.
+        </p>
+        <p class="m-auto" style="font-size: 16px; color: #666;">
+            <a href="{% url 'register' %}" class="buttn">Sign up</a>
+            or
+            <a href="{% url 'login' %}?next=/&must_authenticate=true" class="buttn">Sign in</a>
+        </p>
+    </div>
+</div>
+
+{% endblock content %}

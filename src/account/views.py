@@ -87,3 +87,7 @@ def account_view(request):
     current_year = datetime.now().year
     context['current_year'] = current_year
     return render(request, 'account/account.htm', context)
+
+
+def must_authenticate_view(request):
+    return render(request, 'account/must_authenticate.htm', {})
