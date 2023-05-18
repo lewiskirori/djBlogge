@@ -108,6 +108,29 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     }
+
+    .blog-posts {
+      max-width: 500px;
+      width: 100%;
+      margin: auto;
+    }
+
+    .blog-posts h3 {
+      font-size: 20px;
+      font-weight: normal;
+    }
+
+    .blog-posts li {
+      padding: 10px;
+      border: 1px solid transparent;
+      margin-bottom: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+    }
+
+    .blog-posts a {
+      border-radius: 10px;
+    }
 </style>
 
 <main class="form-signin w-100 m-auto">
@@ -251,6 +274,25 @@
           <a href="{% url 'password_change' %}" class="login-link">Change Password</a>
         </div>
     </form>
+
+    <div class="container mt-4 p-4">
+      <div class="row">
+        <div class="blog-posts">
+          <h3 class="mb-3 font-weight-normal">Blog posts:</h3>
+          {% if blog_posts %}
+          <ul>
+            {% for post in blog_posts %}
+              <a href="{% url 'blog:detail' post.slug %}" style="text-decoration: none;">
+                <li class="list-group-item">{{post}}</li>
+              </a>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p>You have no blog posts yet. Create a post <a href="{% url 'blog:create' %}" class="login-link">here</a>.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
 </main>  
 
 {% endblock content %}

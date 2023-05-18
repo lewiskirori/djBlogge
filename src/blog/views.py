@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from blog.models import BlogPost
 from blog.forms import CreateBlogPostForm
@@ -19,7 +19,7 @@ def create_blog_view(request):
         obj.author = author
         obj.save()
         form = CreateBlogPostForm()
-        context['success_message'] = 'Congratulations! Your blog post has been published.'
+        context['success_message'] = 'Your blog post has been published.'
     
     else:
         form = CreateBlogPostForm()
@@ -27,3 +27,13 @@ def create_blog_view(request):
     context['form'] = form
 
     return render(request, "blog/create_blog.htm", context)
+
+
+def detail_blog_view(request, slug):
+
+    context = {}
+
+    blog_post = get_object_or_404(BlogPost, slug=slug)
+    context['blog_post'] = blog_post
+
+    return render(request, 'blog/detail_blog.htm', context)

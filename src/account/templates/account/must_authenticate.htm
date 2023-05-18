@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>Blog Authentication</title>
+</head>
+
 {% extends 'base.htm' %}
 
 {% block content %}
@@ -35,7 +43,25 @@
     color: #fff;
 }
 
+/* Added CSS for spacing and appearance */
+.container p {
+    margin-bottom: 15px;
+}
+
+.container .m-auto:last-child {
+    margin-bottom: 0;
+}
+
+.container .m-auto a {
+    text-decoration: none;
+}
+
+.container .m-auto .or-text {
+    color: #666;
+    margin: 0 5px;
+}
 </style>
+
 <div class="container">
     <div class="d-flex flex-column">
         <p class="m-auto" style="font-size: 20px; color: #333;">
@@ -44,12 +70,13 @@
         <p class="m-auto" style="font-size: 16px; color: #666;">
             Please sign in or create an account to access the full content and personalized features.
         </p>
-        <p class="m-auto" style="font-size: 16px; color: #666;">
+        <p class="m-auto">
             <a href="{% url 'register' %}" class="buttn">Sign up</a>
-            or
-            <a href="{% url 'login' %}?next=/&must_authenticate=true" class="buttn">Sign in</a>
+            <span class="or-text">or</span>
+            <a href="{% url 'login' %}?next=/blog/create&must_authenticate=true" class="buttn">Sign in</a>
         </p>
     </div>
 </div>
+    
 
 {% endblock content %}
