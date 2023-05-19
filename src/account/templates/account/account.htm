@@ -283,7 +283,7 @@
           <ul>
             {% for post in blog_posts %}
               <a href="{% url 'blog:detail' post.slug %}" style="text-decoration: none;">
-                <li class="list-group-item">{{post}}</li>
+                <li class="list-group-item" title="{{post}}">{{post}}</li>
               </a>
             {% endfor %}
           </ul>

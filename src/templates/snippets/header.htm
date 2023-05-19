@@ -128,13 +128,35 @@
       }
 
       .btn-outline-danger:hover {
-      border-color: #dc3545;
-      background-color: #dc3545;
+        animation: hoverEffectDanger 1s forwards;
+      }
+
+      @keyframes hoverEffectDanger {
+        0% {
+          border-color: #dc3545;
+          background-color: #dc3545;
+        }
+        100% {
+          border-color: #dc3545;
+          color: #dc3545;
+          background-color: rgba(220, 53, 69, 0.2);
+        }
       }
 
       .btn-outline-success:hover {
-      border-color: #28a745;
-      background-color: #28a745;
+        animation: hoverEffectSuccess 1s forwards;
+      }
+
+      @keyframes hoverEffectSuccess {
+        0% {
+          border-color: #28a745;
+          background-color: #28a745;
+        }
+        100% {
+          border-color: #28a745;
+          color: #28a745;
+          background-color: rgba(40, 167, 69, 0.2);
+        }
       }
 
       .btn-outline-primary:hover {
@@ -404,7 +426,7 @@
                         <li class="nav-item">
                           <form id="logout-form" action="{% url 'logout' %}" method="POST">
                             {% csrf_token %}
-                          <a id="logout-button" class="btn btn-sm btn-outline-danger" href="javascript:;"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
+                          <a id="logout-button" class="btn btn-sm btn-outline-danger" href="javascript:;" title="Sign out"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
                           </form>
                         </li>
                           <script>
