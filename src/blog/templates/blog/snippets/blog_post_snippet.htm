@@ -1,0 +1,75 @@
+
+<style type="text/css">
+    .card {
+        background-color: transparent;
+        max-width: 700px;
+        border: 2px solid #eee;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+        padding: 20px;
+    }
+    
+    .card-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+    
+    .card-text {
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .unleash-Btn {
+        background-color: #2e3339;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        font-family: 'Nunito', sans-serif;
+        font-size: smaller;
+    }
+    
+    .unleash-Btn:hover {
+        background-color: #1f2428;
+        text-decoration: none;
+        color: #fff;
+    }
+    
+    .card-footer {
+        background-color: transparent;
+        font-size: 14px;
+        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+        color: #888;
+    }
+    
+    .container {
+        margin-top: 2px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="card m-auto">
+            <a href="{% url 'blog:detail' post.slug %}">
+                <img class="card-img-top" src="{{blog_post.image.url}}" alt="{{blog_post.title}}">
+            </a>
+            <div class="card-body mt-2 mb-2">
+                <a href="{% url 'blog:detail' post.slug %}" class="card-title">{{blog_post.title}}</a>
+                <p class="card-text">{{blog_post.body|safe|truncatechars:180}}</p>
+                {% if blog_post.author == request.user %}
+                    <a href="{% url 'blog:edit' blog_post.slug %}" class="unleash-Btn">Revise your masterpiece</a>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                Keep dazzling the blogosphere! Last updated on {{blog_post.date_update}} by {{blog_post.author}}
+            </div>
+        </div>
+    </div>
+</div>

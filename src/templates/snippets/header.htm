@@ -378,20 +378,20 @@
                 {% if hour|default:""|length > 0 %}
                   {% with hour=hour|default:"0" %}
                     {% if hour|add:0 < 12 %}
-                      <p style="font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;letter-spacing:0.03rem;font-weight: 600;" title="Good Morning">Good Morning</p> <p class="Morning-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                      <p style="font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;letter-spacing:0.03rem;font-weight: 600;">Good Morning</p> <p class="Morning-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
                     {% elif hour|add:0 < 16 %}
-                      <p style="font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;letter-spacing:0.03rem;font-weight: 600;" title="Good Afternoon">Good Afternoon</p> <p class="Noon-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                      <p style="font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;letter-spacing:0.03rem;font-weight: 600;">Good Afternoon</p> <p class="Noon-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
                     {% elif hour|add:0 < 22 %}
-                      <p style="font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;letter-spacing:0.03rem;font-weight: 600;" title="Good Evening">Good Evening</p> <p class="Evening-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                      <p style="font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;letter-spacing:0.03rem;font-weight: 600;">Good Evening</p> <p class="Evening-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
                     {% else %}
-                      <p style="font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;letter-spacing:0.03rem;font-weight: 600;" title="Bed Time">Good Night</p> <p class="Night-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                      <p style="font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;letter-spacing:0.03rem;font-weight: 600;">Good Night</p> <p class="Night-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
                     {% endif %}
                   {% endwith %}
                 {% endif %}
               {% endtimezone %}
             {% else %}
             {% now "l, F jS, Y" as current_date %}
-              <div class="current-date" style="font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:700" title="{{ current_date }}">
+              <div class="current-date" style="font-family:Roboto,Arial,sans-serif;font-size:13px;font-weight:700">
                 {{ current_date }}
               </div>
             {% endif %}
