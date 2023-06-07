@@ -143,19 +143,8 @@
       }
 
       .btn-outline-success:hover {
-        animation: hoverEffectSuccess 1s forwards;
-      }
-
-      @keyframes hoverEffectSuccess {
-        0% {
-          border-color: #28a745;
-          background-color: #28a745;
-        }
-        100% {
-          border-color: #28a745;
-          color: #28a745;
-          background-color: rgba(40, 167, 69, 0.2);
-        }
+        border-color: #28a745;
+        background-color: #28a745;
       }
 
       .btn-outline-primary:hover {
@@ -390,7 +379,7 @@
               {% endtimezone %}
             {% else %}
             {% now "l, F jS, Y" as current_date %}
-              <div class="current-date" style="font-family:Roboto,Arial,sans-serif;font-size:13px;font-weight:700">
+              <div class="current-date" style="font-family:Roboto,Arial,sans-serif;font-size:14px;font-weight:700">
                 {{ current_date }}
               </div>
             {% endif %}
