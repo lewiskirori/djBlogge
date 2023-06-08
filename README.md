@@ -1,5 +1,5 @@
 ## djBlogge
-The Perfect All-Around Blogging Hub
+The perfect all-round blogging hub
 
 ### License
 MIT
