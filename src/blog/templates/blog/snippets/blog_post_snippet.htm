@@ -67,9 +67,9 @@
             </a>
             <div class="card-body mt-2 mb-2">
                 <a href="{% url 'blog:detail' post.slug %}" class="card-title">{{blog_post.title}}</a>
-                <p class="card-text">{{blog_post.body|safe|truncatechars:180}}</p>
+                <p class="card-text">{{blog_post.body|safe|truncatechars:250}}</p>
                 {% if blog_post.author == request.user %}
-                    <a href="{% url 'blog:edit' blog_post.slug %}" class="unleash-Btn">Revise your masterpiece</a>
+                    <a href="{% url 'blog:edit' blog_post.slug %}" class="unleash-Btn">Revise your post</a>
                 {% endif %}
             </div>
             <div class="card-footer">

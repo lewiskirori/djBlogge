@@ -49,12 +49,14 @@ def edit_blog_view(request, slug):
     
     blog_post = get_object_or_404(BlogPost, slug=slug)
     if request.POST:
-        form = UpdateBlogPostForm(request.POST or None, request.FILES or None)
+        form = UpdateBlogPostForm(request.POST or None, request.FILES or None, instance=blog_post)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            context['success_message'] = "Your blog post was updated!"
+            context['success_message'] = "Masterpiece blog post was successfully updated!"
             blog_post = obj
+            return redirect('blog:detail', slug=blog_post.slug)
+
 
     form = UpdateBlogPostForm (
         initial = {
