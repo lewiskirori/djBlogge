@@ -1,5 +1,5 @@
 ## djBlogge
-The perfect all-round blogging hub
+The elegant all-round blogging hub
 
 
 
