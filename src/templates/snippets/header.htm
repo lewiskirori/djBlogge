@@ -393,15 +393,15 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                       <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" title="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
+                          <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" data-tippy-content="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" title="@{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="Account | {{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
                         </li>
                         <li class="nav-item">
                           <form id="logout-form" action="{% url 'logout' %}" method="POST">
                             {% csrf_token %}
-                          <a id="logout-button" class="btn btn-sm btn-outline-danger" href="javascript:;" title="Sign out"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
+                          <a id="logout-button" class="btn btn-sm btn-outline-danger" data-tippy-content="Sign out"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
                           </form>
                         </li>
                           <script>
@@ -439,31 +439,30 @@
 
                   <!-- Search icon -->
                   <div class="search-icon-container">
-                    <a class="search-icon" title="Go to search" href="javascript:;"><i class="fas fa-search"></i></a>
+                    <a class="search-icon" data-tippy-content="Go to search"><i class="fas fa-search"></i></a>
                   </div>
 
                   <!-- Search overlay -->
                   <div class="search-overlay">
                     <div class="search-form-container">
                       <!-- Search form -->
-                      <form class="search-form" role="search" id="searchForm">
+                      <form method="get" class="search-form">
                         <div class="input-container">
-                          <input type="text" placeholder="Search the Exquisite Blogosphere..."  maxlength="31" aria-label="Search">
-                          <buttton class="search-button" title="Search" type="submit"><i class="fas fa-search"></i></buttton>
+                          <input type="text" placeholder="Search..."  maxlength="31" name="search_query" id="id_searchq" aria-label="Search">
+                          <buttton class="search-button" data-tippy-content="Search" type="submit"><i class="fas fa-search"></i></buttton>
                           <button class="close-button" type="button"><i class="fas fa-close"></i></button>
                         </div>
                       </form>
                     </div>
                   </div>
 
-                  <!-- Search overlay script -->
+                  <!-- Search q script -->
                   <script>
                       const searchIcon = document.querySelector('.search-icon');
                       const searchOverlay = document.querySelector('.search-overlay');
                       const closeButton = document.querySelector('.close-button');
                       const searchInput = document.querySelector('.search-form input[type="text"]');
                       const searchButton = document.querySelector('.search-button');
-                      const searchForm = document.getElementById('searchForm'); 
 
                       searchIcon.addEventListener('click', () => {
                         searchOverlay.style.display = 'block';
@@ -495,18 +494,13 @@
                           closeButton.style.display = 'none';
                         }
                       });
-                      searchButton.addEventListener('click', (event) => {
-                        const searchForm = searchButton.closest('form');
 
-                        if (searchForm) {
-                          searchForm.submit();
-                        }
-                        const searchQuery = searchInput.value.toLowerCase(); 
-
-                        const queryString = `?search_query=${encodeURIComponent(searchQuery)}`;
-
-                        window.location.href = `/${queryString}`; 
+                      searchButton.addEventListener('click', () => {
+                        const form = document.querySelector('.search-form');
+                        form.submit();
                       });
+
+                      document.getElementById("id_searchq").value = "{{query}}"
                   </script>
                 </div>
             {% else %}
@@ -522,13 +516,13 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" title="djBlogge Home">Home</a>
+                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" data-tippy-content="djBlogge">Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-primary" href="{% url 'register' %}" title="Register here">Sign Up</a>
+                          <a class="btn btn-sm btn-outline-primary" href="{% url 'register' %}" data-tippy-content="Sign up">Sign Up</a>
                       </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-success" href="{% url 'login' %}?next=/&login=true&nis=true&" title="Sign in">
+                          <a class="btn btn-sm btn-outline-success" href="{% url 'login' %}?next=/&login=true&nis=true" data-tippy-content="Sign in">
                             Log in <i class="fas fa-sign-in"></i>
                           </a>
                         </li>

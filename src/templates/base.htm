@@ -8,6 +8,10 @@
     <meta content="djBlogge The Exquisite All-Round Blogging Hub" name="description">
     <meta content="" name="keywords">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/9415/9415351.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.3/dist/tippy.css" />
+    <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.3/dist/tippy-bundle.umd.js"></script>
     <title>djBlogge | The Exquisite All-Round Blogging Hub</title>
 
     {% include 'snippets/header.htm' %}
@@ -68,6 +72,18 @@
 
         .invert-color {
         filter: invert(1);
+        }
+
+        .tippy-box[data-theme="twitter"] {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        }
+
+        .tippy-box[data-theme="twitter"] .tippy-content {
+        padding: 8px 12px;
+        font-size: 14px;
+        font-family: Roboto, Arial, sans-serif;
+        line-height: 1.4;
         }
 
         #preloader {
@@ -202,8 +218,8 @@
     <!-- Theme switcher -->
     <div class="theme-switcher">
         <button class="theme-button" onclick="toggleTheme()">
-          <i class="fas fa-sun" title="Light Mode"></i>
-          <i class="fas fa-moon" title="Dark Mode"></i>
+          <i class="fas fa-sun" data-tippy-content="Light Mode"></i>
+          <i class="fas fa-moon" data-tippy-content="Dark Mode"></i>
         </button>
     </div>
 
@@ -211,7 +227,7 @@
     <div id="preloader"></div>
     
     <!-- Scroll top -->
-    <button class="back-to-top-btn" title="Back to top">
+    <button class="back-to-top-btn">
       <a class="fas fa-chevron-up"></a>
     </button>
     
@@ -311,6 +327,12 @@
           
           requestAnimationFrame(animation);
         }
+
+        tippy('[data-tippy-content]', {
+            arrow: false,
+            theme: 'twitter',
+            placement: 'bottom',
+        });
       </script>      
   </body>
 </html>

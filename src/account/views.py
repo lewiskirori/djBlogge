@@ -64,7 +64,7 @@ def login_view(request):
 def account_view(request):
     
     if not request.user.is_authenticated:
-        return redirect("/login/?next={}&login=false&nis=false&".format(request.path))
+        return redirect("/login/?next={}&login=false&nis=false".format(request.path))
 
     context = {}
 

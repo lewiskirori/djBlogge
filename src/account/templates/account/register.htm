@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <title>Sign Up - djBlogge</title>
+  <title>Sign Up | djBlogge</title>
 </head>
 
 {% extends 'base.htm' %}
@@ -158,81 +158,102 @@
       </div> -->
 
       <h1 class="h3 mb-3 fw-normal">Create your account</h1>
-      <h6>Sign up to ethereal blogosphere!</h6>
+      <h6>Sign up for the Elegance Blogging World!</h6>
   
-      <div class="form-floating">
-        <input type="email" name="email" class="form-control" id="floatingInput" required="required" placeholder="name@example.com" value="{{ registration_form.email.value|default:'' }}" autocomplete="email">
-        <label for="floatingInput">Email Address</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" name="username" class="form-control" id="floatingInput" required="required" maxlength="11" placeholder="Username" value="{{ registration_form.username.value|default:'' }}" autocomplete="username">
-        <label for="floatingInput">Username</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" name="password1" class="form-control" id="password-input1" required="required" placeholder="Password" maxlength="25">
-        <label for="password-input1">Password</label>
-        <span toggle="#password-input1" class="password-toggle"></span>
-      </div>
-      <div class="form-floating">
-        <input type="password" name="password2" class="form-control" id="password-input2" required="required" placeholder="Confirm Password" maxlength="25">
-        <label for="password-input2">Confirm Password</label>
-        <span toggle="#password-input2" class="password-toggle"></span>
-      </div>
-      <script>
-        $(document).ready(function () {
-            $('.password-toggle').on('mousedown touchstart', function () {
-                const passwordInput1 = $($(this).attr('toggle'));
-                $(this).addClass('show');
-                passwordInput1.attr('type', 'text');
-            }).on('mouseup touchend', function () {
-                const passwordInput1 = $($(this).attr('toggle'));
-                $(this).removeClass('show');
-                if (!$(this).hasClass('show')) {
-                    passwordInput1.attr('type', 'password');
-                }
-            });
-        });
-        $(document).ready(function () {
-            $('.password-toggle').on('mousedown touchstart', function () {
-                const passwordInput2 = $($(this).attr('toggle'));
-                $(this).addClass('show');
-                passwordInput2.attr('type', 'text');
-            }).on('mouseup touchend', function () {
-                const passwordInput2 = $($(this).attr('toggle'));
-                $(this).removeClass('show');
-                if (!$(this).hasClass('show')) {
-                    passwordInput2.attr('type', 'password');
-                }
-            });
-        });
-      </script>                
-        {% for field in registration_form %}
-            {% for error in field.errors %}
-                <div class="alert alert-danger" role="alert">
-                    <i class="fas fa-exclamation-circle"></i> {{ error }}
-                </div>
+        <div class="form-group">
+          <div class="form-floating">
+              <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="{{ registration_form.email.value|default:'' }}" autocomplete="email">
+              <label for="floatingInput">Email Address</label>
+          </div>
+          {% for error in registration_form.email.errors %}
+            <div class="alert alert-danger" role="alert">
+              <i class="fas fa-exclamation-circle"></i> {{ error }}
+            </div>            
+          {% endfor %}
+        </div>
+      
+        <div class="form-group">
+            <div class="form-floating">
+                <input type="text" name="username" class="form-control" id="floatingInput" maxlength="11" placeholder="Username" value="{{ registration_form.username.value|default:'' }}" autocomplete="username">
+                <label for="floatingInput">Username</label>
+            </div>
+            {% for error in registration_form.username.errors %}
+              <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+              </div>            
             {% endfor %}
-        {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            <div class="form-floating">
+                <input type="password" name="password1" class="form-control" id="password-input1" placeholder="Password" maxlength="25">
+                <label for="password-input1">Password</label>
+                <span toggle="#password-input1" class="password-toggle"></span>
+            </div>
+            {% for error in registration_form.password1.errors %}
+              <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+              </div>            
+            {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            <div class="form-floating">
+                <input type="password" name="password2" class="form-control" id="password-input2" placeholder="Confirm Password" maxlength="25">
+                <label for="password-input2">Confirm Password</label>
+                <span toggle="#password-input2" class="password-toggle"></span>
+            </div>
+            {% for error in registration_form.password2.errors %}
+              <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+              </div>            
+            {% endfor %}
+        </div>
 
+        <script>
+          $(document).ready(function () {
+              $('.password-toggle').on('mousedown touchstart', function () {
+                  const passwordInput1 = $($(this).attr('toggle'));
+                  $(this).addClass('show');
+                  passwordInput1.attr('type', 'text');
+              }).on('mouseup touchend', function () {
+                  const passwordInput1 = $($(this).attr('toggle'));
+                  $(this).removeClass('show');
+                  if (!$(this).hasClass('show')) {
+                      passwordInput1.attr('type', 'password');
+                  }
+              });
+          });
+          $(document).ready(function () {
+              $('.password-toggle').on('mousedown touchstart', function () {
+                  const passwordInput2 = $($(this).attr('toggle'));
+                  $(this).addClass('show');
+                  passwordInput2.attr('type', 'text');
+              }).on('mouseup touchend', function () {
+                  const passwordInput2 = $($(this).attr('toggle'));
+                  $(this).removeClass('show');
+                  if (!$(this).hasClass('show')) {
+                      passwordInput2.attr('type', 'password');
+                  }
+              });
+          });
+        </script>
+        
         {% if registration_form.non_field_errors %}
             <div class="alert alert-danger" role="alert">
                 <i class="fas fa-exclamation-circle"></i> {{ registration_form.non_field_errors }}
             </div>
         {% endif %}
-        {% if form.success %}
-            <div class="alert alert-success" role="alert">
-                <i class="fas fa-check-circle"></i> {{ form.success }}
-            </div>
-        {% endif %}
+
         <div>
-          <button class="w-100" type="submit" name="submitButton">
-              Get Started
-          </button>
-        </div>
+            <button class="w-100" type="submit" name="submitButton">
+                Get Started
+            </button>
+        </div>    
         <hr class="my-4" style="width: 80%;margin: 0 auto;height: 2px;">
 
         <div class="text-center">
-          Already have an account? <a href="{% url 'login' %}?next=/&login=true&nis=true&" class="login-link">Log in here</a>
+          Already have an account? <a href="{% url 'login' %}?next=/&login=true&nis=true" class="login-link">Log in here</a>
         </div>
     </form>
 </main>  
