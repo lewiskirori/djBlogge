@@ -396,7 +396,7 @@
                           <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" data-tippy-content="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="Account | {{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="@{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
                         </li>
                         <li class="nav-item">
                           <form id="logout-form" action="{% url 'logout' %}" method="POST">
@@ -448,7 +448,7 @@
                       <!-- Search form -->
                       <form method="get" class="search-form">
                         <div class="input-container">
-                          <input type="text" placeholder="Search..."  maxlength="31" name="search_query" id="id_searchq" aria-label="Search">
+                          <input type="text" placeholder="Search djBlogge"  maxlength="31" name="search_query" id="id_searchq" aria-label="Search">
                           <buttton class="search-button" data-tippy-content="Search" type="submit"><i class="fas fa-search"></i></buttton>
                           <button class="close-button" type="button"><i class="fas fa-close"></i></button>
                         </div>
