@@ -1,5 +1,5 @@
 ## djBlogge
-### `Generally speaking, your fantastic blogging hub`
+### `Your wonderful center for blogging generally`
 
 
 
