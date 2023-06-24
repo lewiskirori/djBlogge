@@ -1,5 +1,5 @@
 ## djBlogge
-### `A stunning center for blogging in general`
+### `Generally speaking, your fantastic blogging hub`
 
 
 
