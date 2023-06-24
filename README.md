@@ -1,5 +1,11 @@
 ## djBlogge
-The elegant all-round blogging hub
+# `The stunning center for blogging in general`
+
+
+
+
+
+
 
 
 
