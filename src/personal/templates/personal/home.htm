@@ -60,10 +60,15 @@
 	}
 
 	.lead {
-	font-size: 17px;
-	font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-	letter-spacing: 0.1px;
-    font-weight: 500;
+		font-size: 17px;
+		font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+		letter-spacing: 0.1px;
+		font-weight: 500;
+	}
+
+	#sticky-column {
+		position: sticky;
+		top: 20px;
 	}
 </style>
 
@@ -74,7 +79,6 @@
 
 		<!-- blog feed -->
 		<div class="left-column col-lg-7 offset-lg-1">
-
 			<!-- Top 'create post' bar -->
 			<div class="d-lg-none mb-1">
 				<div class="card m-auto d-flex flex-column p-3 create-post-bar">
@@ -99,20 +103,21 @@
 				</div>
 			{% endif %}
 			<!-- End Blog posts-->
+
+			<!-- Pagination -->
+			{% include 'blog/snippets/blog_post_pagination.htm' with blog_posts=blog_posts %}	
 		</div>
 		<!-- end blog feed -->
 
 
 		<!-- Right 'create post' column  -->
 		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
-
-			<div class="card create-post-bar d-flex flex-column p-3">
+			<div class="card create-post-bar d-flex flex-column p-3" id="sticky-column">
 				<img class="img-fluid d-block m-auto pb-2" src="{% static 'djBlogge-icon.png' %}" width="42" height="42">
 				<p class="lead">Ready to unleash your blogging genius? Step into our extraordinary blogging hub and let your creativity run wild. 
           		With our user-friendly interface and powerful features, you'll be crafting captivating posts in no time!</p>
         		<p class="m-auto"><a class="create-post-btn" href="{% url 'blog:create' %}">Compose</a></p>
 			</div>
-		
 		</div>
 		<!-- end Right 'create post' column  -->
 	</div>
