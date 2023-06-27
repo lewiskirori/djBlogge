@@ -21,6 +21,7 @@
 
     .pagination .page-link {
         color: #888;
+        cursor: pointer;
         border: 1px dotted #666;
         background-color: transparent;
         padding: 5px 10px;
@@ -71,10 +72,10 @@
 
 <div class="d-flex flex-column m-auto pagination mt-5">
     <nav aria-label="Page navigation">
-        <ul class="justify-content-center">
+        <ul class="justify-content-center" id="pagination-list">
             {% if blog_posts.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?{% if query %}search_q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Previous</a>
+                    <a class="page-link" onclick="goToPage('{{ blog_posts.previous_page_number }}')">&laquo; Previous</a>
                 </li>
             {% endif %}
         
@@ -82,20 +83,29 @@
                 {% if blog_posts.number == i %}
                     <li class="page-item active"><a class="page-link">{{ i }}</a></li>
                 {% else %}
-                    <li class="page-item"><a class="page-link" href="?{% if query %}search_q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+                    <li class="page-item"><a class="page-link" onclick="goToPage('{{ i }}')">{{ i }}</a></li>
                 {% endif %}
             {% endfor %}
             
             {% if blog_posts.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?{% if query %}search_q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">Next</a>
+                    <a class="page-link" onclick="goToPage('{{ blog_posts.next_page_number }}')">Next</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="?{% if query %}search_q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">Last &raquo;</a>
+                    <a class="page-link" onclick="goToPage('{{ blog_posts.paginator.num_pages }}')">Last &raquo;</a>
                 </li>
             {% endif %}
         </ul>
     </nav>
 </div>
+
+<script>
+    function goToPage(pageNumber) {
+        var url = '?{% if query %}search_q={{query}}&{% endif %}page=' + pageNumber;
+   
+        window.location.href = url;
+    }
+</script>
+
 
 

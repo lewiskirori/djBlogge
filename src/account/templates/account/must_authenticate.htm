@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <title>Authentication | djBlogge</title>
+  <title>Verification | djBlogge</title>
 </head>
 
 {% extends 'base.htm' %}
@@ -12,10 +12,10 @@
 
 <style>
 .container {
-    background-color: #f7f7f7;
+    background-color: transparent;
     border-radius: 2px;
     padding: 40px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     max-width: 500px;
     margin: 0 auto;
     margin-top: 30px;
@@ -38,6 +38,7 @@
     font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     font-size: 16px;
     margin: 5px;
+    cursor: pointer;
 }
 
 .buttn:hover {
@@ -66,19 +67,37 @@
 <div class="container">
     <div class="d-flex flex-column">
         <img class="img-fluid d-block m-auto pb-2" src="../../../static/djBlogge-icon.png" width="22" height="22">
-        <p class="m-auto" style="font-size: 20px; color: #333; font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;">
+        <p class="m-auto" style="font-size: 20px; font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;">
             This page requires authentication to ensure your privacy and security.
         </p>
         <p class="m-auto" style="font-size: 16px; color: #666;">
             Please sign in or create an account to access the full content and personalized features.
         </p>
         <p class="m-auto">
-            <a href="{% url 'register' %}" class="buttn">Sign up</a>
+            <a id="signup-button" class="buttn">Sign up</a>
             <span class="or-text">or</span>
-            <a href="{% url 'login' %}?next=/&must_authenticate=true" class="buttn">Sign in</a>
+            <a id="signin-button" class="buttn">Sign in</a>
         </p>
     </div>
 </div>
-    
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var signUpButton = document.getElementById("signup-button");
+        var signInButton = document.getElementById("signin-button");
+
+        signUpButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log("Clicked on Sign Up");
+            window.location.href = "/register";
+        });
+
+        signInButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log("Clicked on Sign in");
+            window.location.href = "/login?next=/&must_authenticate=true"; 
+        });
+    });
+</script>
+    
 {% endblock content %}

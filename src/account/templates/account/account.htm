@@ -22,157 +22,187 @@
 {% load tz %}
 
 <style text="text/css">
-    .h3, h6{
-    text-align: center;
-    font-family:"Nunito","-apple-system","BlinkMacSystemFont","Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    }
+  .h3, h6{
+  text-align: center;
+  font-family:"Nunito","-apple-system","BlinkMacSystemFont","Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  }
 
-    .h3 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-    }
+  .h3 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  }
 
-    body {
-    background-color: #f5f5f5;
-    }
+  body {
+  background-color: #f5f5f5;
+  }
 
-    .login-link {
-    color: #007bff;
-    text-decoration: none;
-    display: inline-block;
-    margin-left: 0;
-    position: relative;
-    font-size: 90%;
-    font-weight: 600;
-    }
+  .login-link {
+  color: #007bff;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 0;
+  position: relative;
+  font-size: 90%;
+  font-weight: 600;
+  }
 
-    .login-link::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    height: 2px;
-    width: 0;
-    background-color: #007bff;
-    transition: width 0.3s ease-in-out;
-    }
+  .login-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background-color: #007bff;
+  transition: width 0.3s ease-in-out;
+  }
 
-    .login-link:hover::before {
+  .login-link:hover::before {
+  width: 100%;
+  }
+
+  button {
+  background-color: #2e3339;
+  color: #f5f5f5;
+  border: 1px solid rgba(0, 123, 255, 0.5);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  padding: 7px;
+  transition: all 0.3s ease-in-out;
+  }
+
+  @keyframes glow {
+      0% {
+        box-shadow: none;
+      }
+      50% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      }
+      100% {
+        box-shadow: none;
+      }
+  }
+
+  .fa-spin {
+  color: #fff;
+  }
+  
+  button:focus {
+  animation: glow 1s ease-in-out infinite;
+  }
+  
+  .form-signin {
+  max-width: 330px;
+  padding: 15px;
+  }
+
+  .form-floating {
+  color: #bbb;
+  font-weight: bolder;
+  font-family:"Nunito","-apple-system","BlinkMacSystemFont","Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  }
+
+  .form-signin .form-floating:focus-within {
+  z-index: 2;
+  }
+
+  .form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  }
+
+  .form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  }
+
+  .blog-posts {
+    max-width: 500px;
     width: 100%;
-    }
-
-    button {
-    background-color: #2e3339;
-    color: #f5f5f5;
-		border: 1px solid rgba(0, 123, 255, 0.5);
-		border-radius: 5px;
+    margin: auto;
+    max-height: 400px;
+    overflow-y: scroll;
     position: relative;
-    overflow: hidden;
-    border-radius: 50px;
-    font-size: 1.2rem;
+  }
+
+  .blog-posts::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  .blog-posts::-webkit-scrollbar-thumb {
+    background-color: #2e3339;
+    border-radius: 4px;
+  }
+
+  .blog-posts::-webkit-scrollbar-thumb:hover {
+    border: 1px solid rgba(0, 123, 255, 0.5);
+    background-color: #1f2428;
+  }
+
+  .blog-posts::before,
+  .blog-posts::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 30px;
+    width: 8px;
+    background-color: #2e3339;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .blog-posts::before {
+    left: 0;
+  }
+
+  .blog-posts::after {
+    right: 0;
+  }
+
+  .blog-posts:hover::before,
+  .blog-posts:hover::after {
+    opacity: 1;
+  }
+
+  .blog-posts::-webkit-scrollbar-button {
+    display: none;
+  }
+  .blog-posts h3 {
+    font-size: 20px;
+    font-weight: normal;
     font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-    padding: 7px;
-    transition: all 0.3s ease-in-out;
-    }
+  }
 
-    @keyframes glow {
-        0% {
-          box-shadow: none;
-        }
-        50% {
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-        }
-        100% {
-          box-shadow: none;
-        }
-    }
-
-    .fa-spin {
-    color: #fff;
-    }
-    
-    button:focus {
-    animation: glow 1s ease-in-out infinite;
-    }
-    
-    .form-signin {
-    max-width: 330px;
-    padding: 15px;
-    }
-
-    .form-floating {
-    color: #bbb;
-    font-weight: bolder;
-    font-family:"Nunito","-apple-system","BlinkMacSystemFont","Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    }
-
-    .form-signin .form-floating:focus-within {
-    z-index: 2;
-    }
-
-    .form-signin input[type="email"] {
+  .blog-posts li {
+    padding: 10px;
+    border: 1px solid transparent;
     margin-bottom: 10px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    }
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+  }
 
-    .form-signin input[type="text"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    }
+  .blog-posts li:hover {
+    border: 1px solid #333;
+    text-decoration: underline;
+  }
 
-    .blog-posts {
-      max-width: 500px;
-      width: 100%;
-      margin: auto;
-      max-height: 400px;
-      overflow-y: scroll;
-    }
+  .blog-posts a {
+    border-radius: 10px;
+    color: #333;
+    transition: color 0.3s ease;
+  }
 
-    .blog-posts::-webkit-scrollbar {
-      width: 8px;
-      background-color: transparent;
-    }
-
-    .blog-posts::-webkit-scrollbar-thumb {
-      background-color: #2e3339;
-      border-radius: 4px;
-    }
-
-    .blog-posts::-webkit-scrollbar-thumb:hover {
-      border: 1px solid rgba(0, 123, 255, 0.5);
-      background-color: #1f2428;
-    }
-
-    .blog-posts h3 {
-      font-size: 20px;
-      font-weight: normal;
-      font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-    }
-
-    .blog-posts li {
-      padding: 10px;
-      border: 1px solid transparent;
-      margin-bottom: 10px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-      transition: border-color 0.3s ease;
-    }
-
-    .blog-posts li:hover {
-      border: 1px solid #333;
-      text-decoration: underline;
-    }
-
-    .blog-posts a {
-      border-radius: 10px;
-      color: #333;
-      transition: color 0.3s ease;
-    }
-
-    .blog-posts a:hover {
-      color: #2e3339;
-    }
+  .blog-posts a:hover {
+    color: #2e3339;
+  }
 </style>
 
 <main class="form-signin w-100 m-auto">
@@ -322,21 +352,31 @@
     <div class="container mt-4 p-4">
       <div class="row">
         <div class="blog-posts">
-          <h3 class="mb-3 font-weight-normal">Blog posts:</h3>
+          <h3 class="mb-3 font-weight-normal">Authored blogs</h3>
           {% if blog_posts %}
           <ul>
             {% for post in blog_posts %}
-              <a href="{% url 'blog:detail' post.slug %}" style="text-decoration: none;">
+              <a onclick="goToPost('{{ post.slug }}')" style="text-decoration: none;">
                 <li class="list-group-item" data-tippy-content="{{post}}">{{post}}</li>
               </a>
             {% endfor %}
           </ul>
           {% else %}
-          <p>You have no blog posts yet. Create a post <a href="{% url 'blog:create' %}" class="login-link">here</a>.</p>
+          <p>“ You have no blog posts yet. Go ahead and create a post <a href="{% url 'blog:create' %}" class="login-link">here</a>. ”</p>
           {% endif %}
         </div>
       </div>
     </div>
+    
+    <script>
+      function goToPost(slug) {
+        // Construct the URL with the post slug
+        var url = '{% url "blog:detail" "__slug__" %}'.replace('__slug__', slug);
+        
+        // Redirect to the updated URL
+        window.location.href = url;
+      }
+    </script>    
 </main>  
 
 {% endblock content %}
