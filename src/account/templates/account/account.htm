@@ -11,7 +11,7 @@
           document.title = title + username;
       };
   </script>
-  </head>
+</head>
 
 {% extends 'base.htm' %}
 
@@ -357,7 +357,7 @@
           <ul>
             {% for post in blog_posts %}
               <a onclick="goToPost('{{ post.slug }}')" style="text-decoration: none;">
-                <li class="list-group-item" data-tippy-content="{{post}}">{{post}}</li>
+                <li class="list-group-item" title="{{post}}">{{post}}</li>
               </a>
             {% endfor %}
           </ul>
@@ -370,10 +370,8 @@
     
     <script>
       function goToPost(slug) {
-        // Construct the URL with the post slug
         var url = '{% url "blog:detail" "__slug__" %}'.replace('__slug__', slug);
         
-        // Redirect to the updated URL
         window.location.href = url;
       }
     </script>    
