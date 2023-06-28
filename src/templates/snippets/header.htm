@@ -373,10 +373,18 @@
             {% endif %}
           </div>            
           <div class="col-4 text-center">
-            <a class="blog-header-logo" href="">
+            <a class="blog-header-logo">
               djBlogge
             </a>
           </div>
+
+          <script>
+            const logoLink = document.querySelector('.blog-header-logo');
+            const logoHref = '';
+        
+            logoLink.setAttribute('href', logoHref);
+          </script>
+
           <div class="col-4 d-flex justify-content-end align-items-center">
             {% if request.user.is_authenticated %}
                 <div class="row justify-content-end align-items-center"> 
