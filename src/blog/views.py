@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
-
 from blog.models import BlogPost
 from blog.forms import CreateBlogPostForm, UpdateBlogPostForm
 from account.models import Account
@@ -20,7 +19,7 @@ def create_blog_view(request):
         obj.author = author
         obj.save()
         form = CreateBlogPostForm()
-        context['success_message'] = 'Your blog post has been published.'
+        context['success_message'] = 'Congrats! Your blog post has been published.'
     
     else:
         form = CreateBlogPostForm()
