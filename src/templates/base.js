@@ -1,5 +1,3 @@
-// base.js
-
 // Color theme
 function toggleTheme() {
     var body = document.getElementsByTagName("body")[0];
