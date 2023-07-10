@@ -409,7 +409,7 @@
                         <li class="nav-item">
                           <form id="logout-form" action="{% url 'logout' %}" method="POST">
                             {% csrf_token %}
-                          <a id="logout-button" class="btn btn-sm btn-outline-danger" data-tippy-content="Sign out"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
+                          <a id="logout-button" class="btn btn-sm btn-outline-danger"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
                           </form>
                         </li>
                           <script>
@@ -447,7 +447,7 @@
 
                   <!-- Search icon -->
                   <div class="search-icon-container">
-                    <a class="search-icon" data-tippy-content="Click to show search"><i class="fas fa-search"></i></a>
+                    <a class="search-icon" data-tippy-content="Show search"><i class="fas fa-search"></i></a>
                   </div>
 
                   <!-- Search overlay -->
@@ -456,7 +456,7 @@
                       <!-- Search form -->
                       <form method="get" class="search-form">
                         <div class="input-container">
-                          <input type="text" placeholder="Search djBlogge"  maxlength="31" name="search_q" id="id_searchq" aria-label="Search">
+                          <input type="text" placeholder="Search djBlogge"  maxlength="31" name="search_q" id="id_searchq" aria-label="Search" autocomplete="off">
                           <buttton class="search-button" data-tippy-content="Search" type="submit"><i class="fas fa-search"></i></buttton>
                           <button class="close-button" type="button"><i class="fas fa-close"></i></button>
                         </div>

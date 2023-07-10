@@ -355,7 +355,10 @@
             {% endfor %}
           </ul>
           {% else %}
-          <p>“ You have no blog posts yet. Go ahead and create a post <a href="{% url 'blog:create' %}" class="login-link">here</a>. ”</p>
+          <p>
+            “ Currently, you don’t have any blog posts. Please do not hesitate to <a href="{% url 'blog:create' %}" class="login-link" style="font-style: italic; color: #007bff;">
+            create your first post</a> straightaway. ”
+          </p>
           {% endif %}
         </div>
       </div>

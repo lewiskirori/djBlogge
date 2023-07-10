@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<title>Blog - Update post</title>
+<title>Blog / Modify post</title>
 
 {% extends 'base.htm' %}
 
 {% block content %}
 <style type="text/css">
     .create-form {
-        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-        max-width: 500px;
-        margin: 50px auto;
-        margin-top: 20px;
-        padding: 20px;
-        background-color: transparent;
-        border: 1px solid #fff;
-        border-radius: 8px;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    max-width: 500px;
+    margin: 50px auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     }
 
     .form-group {
-        margin-bottom: 20px;
+    margin-bottom: 20px;
     }
 
     .form-group label {
-        display: block;
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 10px;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
     }
 
     .form-group input,
     .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        background-color: #ffffff;
-        margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-bottom: 10px;
     }
 
     .form-group textarea {
@@ -46,82 +46,82 @@
     }
 
     .form-group input:focus {
-        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
     }
 
     .form-group textarea:focus {
-        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
     }
 
     .image-group {
-        position: relative;
-        text-align: center;
-        cursor: pointer;
-        margin-bottom: 20px;
-        font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     }
 
     .image-group:hover .image {
-        opacity: 0.3;
+    opacity: 0.3;
     }
 
     .image-group:hover .middle {
-        opacity: 1;
+    opacity: 1;
     }
 
     .image {
-        opacity: 1;
-        transition: .5s ease;
-        backface-visibility: hidden;
-        margin-bottom: 10px;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    margin-bottom: 10px;
     }
 
     .middle {
-        transition: .5s ease;
-        opacity: 0;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     }
 
     .text {
-        margin: auto;
-        background-color: #4CAF50;
-        color: white;
-        font-size: 15px;
-        padding: 15px;
+    margin: auto;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 15px;
+    padding: 15px;
     }
 
     .update-edit {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #2e3339;
-        color: #ffffff;
-        font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-        text-decoration: none;
-        border: none;
-        border-radius: 2px;
-        transition: background-color 0.2s;
-        font-size: 16px;
-        margin-top: 10px;
-        cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2e3339;
+    color: #ffffff;
+    font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    transition: background-color 0.2s;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
     }
 
     .update-edit:hover {
-        background-color: #1f2428;
+    background-color: #1f2428;
     }
 
     .success-message {
-        color: green;
-        text-align: center;
-        margin-bottom: 20px;
+    color: green;
+    text-align: center;
+    margin-bottom: 20px;
     }
 
     .error-message {
-        color: red;
-        margin-bottom: 10px;
+    color: red;
+    margin-bottom: 10px;
     }
 </style>
 
