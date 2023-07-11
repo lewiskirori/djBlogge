@@ -68,9 +68,13 @@
             Please sign in or create an account to access the full content and personalized features.
         </p>
         <p class="m-auto">
-            <a id="signup-button" class="buttn">Sign up</a>
+            <a id="signup-button" class="buttn">
+                <i class="fas fa-user-plus"></i> Sign up
+            </a>
             <span class="or-text">or</span>
-            <a id="signin-button" class="buttn">Sign in</a>
+            <a id="signin-button" class="buttn">
+                <i class="fas fa-door-open"></i> Sign in
+            </a>
         </p>
     </div>
 </div>
@@ -82,7 +86,7 @@
 
         signUpButton.addEventListener("click", function(event) {
             event.preventDefault();
-            console.log("Clicked on Sign Up");
+            console.log("Clicked on Sign up");
             window.location.href = "/register";
         });
 

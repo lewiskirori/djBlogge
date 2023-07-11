@@ -104,7 +104,9 @@
                 <a href="{% url 'blog:detail' post.slug %}" class="card-title">{{blog_post.title}}</a>
                 <p class="card-text">{{blog_post.body|safe|truncatechars:250}}</p>
                 {% if blog_post.author == request.user %}
-                    <a href="{% url 'blog:edit' blog_post.slug %}" class="unleash-Btn">Revise your post</a>
+                    <a href="{% url 'blog:edit' blog_post.slug %}" class="unleash-Btn">
+                        <i class="far fa-edit"></i> Revise your post
+                    </a>
                 {% endif %}
             </div>
             <div class="card-footer">
