@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
+from django.http import HttpResponse
 from blog.models import BlogPost
 from blog.forms import CreateBlogPostForm, UpdateBlogPostForm
 from account.models import Account
@@ -48,12 +49,16 @@ def edit_blog_view(request, slug):
         return redirect("must_authenticate")
     
     blog_post = get_object_or_404(BlogPost, slug=slug)
+
+    if blog_post.author != user:
+        return HttpResponse("Oops! Sorry, you are not authorized to perform this action. This action is restricted to the author of the post.")
+
     if request.POST:
         form = UpdateBlogPostForm(request.POST or None, request.FILES or None, instance=blog_post)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            context['success_message'] = "Masterpiece blog post was successfully updated!"
+            context['success_message'] = "Masterpiece blog post was updated successfully!"
             blog_post = obj
             return redirect('blog:detail', slug=blog_post.slug)
 
