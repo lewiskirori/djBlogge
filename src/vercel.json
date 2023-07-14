@@ -1,13 +1,13 @@
 {
     "builds": [{
-        "src": "djBlogge/wsgi.py",
+        "src": "src/mysite/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLamdaSize": "250mb", "runtime": "python3.11.3"}
     }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "djBlogge/wsgi.py"
+            "dest": "src/mysite/wsgi.py"
         }
     ]
 }
