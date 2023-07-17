@@ -1,9 +1,9 @@
 {
     "version": 2,
     "builds": [{
-        "src": "src/mysite/wsgi.py",
+        "src": "mysite/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLamdaSize": "250mb", "runtime": "python3.11.3"}
+        "config": { "maxLamdaSize": "15mb", "runtime": "python3.9"}
     },
     {
         "src": "build_files.sh",
@@ -20,7 +20,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "src/mysite/wsgi.py"
+            "dest": "mysite/wsgi.py"
         }
     ]
 }
