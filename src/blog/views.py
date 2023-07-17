@@ -51,7 +51,7 @@ def edit_blog_view(request, slug):
     blog_post = get_object_or_404(BlogPost, slug=slug)
 
     if blog_post.author != user:
-        return HttpResponse("Oops! Sorry, you are not authorized to perform this action. This action is restricted to the author of the post.")
+        return HttpResponse("Oops! Sorry, you are not authorized to perform this action. This action is restricted to the post’s author.")
 
     if request.POST:
         form = UpdateBlogPostForm(request.POST or None, request.FILES or None, instance=blog_post)
