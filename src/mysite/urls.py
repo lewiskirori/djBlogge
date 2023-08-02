@@ -51,8 +51,7 @@ urlpatterns = [
     path('password_reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_done.htm'),
         name='password_reset_done'),
 
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(),
-                                    #template_name='registration/password_reset_email.htm' 
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_email.htm'), 
          name='password_reset_confirm'),
          
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset_form.htm'), 
@@ -62,6 +61,6 @@ urlpatterns = [
         name='password_reset_complete'),
 ]
 
-#if settings.DEBUG:
-#    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-#    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

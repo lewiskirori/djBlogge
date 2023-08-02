@@ -27,9 +27,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
-#if DEBUG:
+if DEBUG:
     #During development only
-#    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #else
 
 # Application definition
