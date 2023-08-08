@@ -1,7 +1,7 @@
 {
     "version": 2,
     "builds": [{
-        "src": "api/index.py",
+        "src": "src/api/index.py",
         "use": "@vercel/python",
         "config": { "maxLamdaSize": "15mb", "runtime": "python3.9"}
         }
@@ -13,7 +13,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "api/index.py"
+            "dest": "src/api/index.py"
         }
     ]
 }
