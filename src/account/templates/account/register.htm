@@ -98,22 +98,6 @@
     transition: all 0.1s ease-in-out;
 		}
 
-    @keyframes glow {
-        0% {
-          box-shadow: none;
-        }
-        50% {
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-        }
-        100% {
-          box-shadow: none;
-        }
-    }
-
-    button:focus {
-    animation: glow 1s ease-in-out infinite;
-    }
-
     .fa-spin-pulse {
     color: #fff;
     }
@@ -126,25 +110,29 @@
     position: relative;
     font-size: 97%;
     font-weight: 600;
+    padding-bottom: 5px;
     }
 
     .text-center {
-      font-size: 90%;
+    font-size: 90%;
     }
 
     .login-link::before {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -2px;
-    height: 2px;
-    width: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
     background-color: #007bff;
-    transition: width 0.3s ease-in-out;
+    border-radius: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
     }
 
     .login-link:hover::before {
-    width: 100%;
+    transform: scaleX(1);    
     }
 </style>
 
@@ -154,7 +142,7 @@
         <img src="{% static 'dB_icon_1.ico' %}" alt="djBlogge - Sign Up" width="72" height="57">
       </div> -->
       <h1 class="h3 mb-3 fw-normal">Create your account</h1>
-      <h6>Sign up for the Elegance Blogging World!</h6>
+      <h6>Join our extraordinary content hub today!</h6>
   
         <div class="form-group">
           <div class="form-floating">

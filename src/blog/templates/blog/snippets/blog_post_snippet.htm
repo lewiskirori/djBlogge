@@ -11,6 +11,12 @@
     object-fit: cover;
     margin-bottom: -20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.2s;
+    }
+
+    .card-img-top:focus,
+    .card-img-top:active {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
     
     .card-body {
@@ -18,6 +24,7 @@
     }
     
     .card-title {
+    outline: none;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -42,10 +49,11 @@
     transition: background-color 0.3s ease;
     font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     font-size: smaller;
+    outline: none;
     }
     
     .unleash-Btn:hover {
-    background-color: #1f2428;
+    background-color: #1a1d20;
     text-decoration: none;
     color: #fff;
     }
@@ -75,6 +83,7 @@
     position: relative;
     font-size: 90%;
     font-weight: 600;
+    padding-bottom: 3px;
     cursor: pointer;
     }
 
@@ -83,14 +92,17 @@
     position: absolute;
     left: 0;
     bottom: -2px;
-    height: 2px;
-    width: 0;
+    height: 3px;
+    width: 100%;
     background-color: #007bff;
-    transition: width 0.3s ease-in-out;
+    border-radius: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
     }
 
     .explore-link:hover::before {
-    width: 100%;
+    transform: scaleX(1);    
     }
 </style>
 
@@ -111,7 +123,7 @@
                 {% endif %}
             </div>
             <div class="card-footer">
-                <span class="footer-text">Keep dazzling the blogosphere!</span> Last modified on <strong>{{blog_post.date_updated}}</strong> by <strong>{{blog_post.author}}</strong>
+                <span class="footer-text">Forever dazzling the djBloggesphere!</span> Last modified on <strong>{{blog_post.date_updated}}</strong> by <strong>{{blog_post.author}}</strong>
             </div>
         </div>
     </div>

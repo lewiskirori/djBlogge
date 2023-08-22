@@ -24,6 +24,31 @@
       font-family: "Playfair Display", Georgia, "Times New Roman", serif;
       font-size: 2.25rem;
       color: inherit;
+      outline: none;
+      text-decoration: none;
+      position: relative;
+      }
+
+      .blog-header-logo::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #e5e5e5;
+      transition: width 0.2s, background-color 0.2s;
+      }
+
+      .blog-header-logo:hover::before {
+      width: 100%;
+      background-color: #e5e5e5;
+      }
+
+      .blog-header-logo:active {
+      padding: 2px auto; 
+      background-color: rgba(108, 117, 125, 0.2);
+      border-radius: 4px;
       }
 
       .blog-header-logo:hover {
@@ -132,8 +157,8 @@
       }
 
       .btn-outline-success:hover {
-        border-color: #28a745;
-        background-color: #28a745;
+      border-color: #28a745;
+      background-color: #28a745;
       }
 
       .btn-outline-primary:hover {
@@ -152,26 +177,6 @@
       border-color: #6c757d;
       color: #6c757d;
       background-color: rgba(108, 117, 125, 0.2);
-      }
-
-      @keyframes glow {
-        0% {
-        box-shadow: none;
-        }
-        50% {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-        }
-        100% {
-        box-shadow: none;
-        }
-      }
-
-      .btn-outline-danger:focus,
-      .btn-outline-success:focus,
-      .btn-outline-primary:focus,
-      .btn-outline-info:focus,
-      .btn-outline-secondary:focus {
-      animation: glow 1s ease-in-out infinite;
       }
 
       @media (min-width: 768px) {
@@ -389,7 +394,7 @@
             {% if request.user.is_authenticated %}
                 <div class="row justify-content-end align-items-center"> 
                   <!-- Navigation menu -->
-                  <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-end align-items-center">
+                  <nav class="navbar navbar-expand-lg d-flex justify-content-end align-items-center">
                     <button class="navbar-toggler navbar-toggler-right border-0" type="navGrid" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
                       <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
                         <rect x="3" y="3" width="7" height="7"></rect>
@@ -404,7 +409,7 @@
                           <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" title="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="{{request.user.username}}" title="{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
                         </li>
                         <li class="nav-item">
                           <form id="logout-form" action="{% url 'logout' %}" method="POST">
@@ -512,7 +517,7 @@
                   </script>
                 </div>
             {% else %}
-              <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-end align-items-center">
+              <nav class="navbar navbar-expand-lg d-flex justify-content-end align-items-center">
                 <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
                   <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
                     <rect x="3" y="3" width="7" height="7"></rect>
@@ -530,7 +535,7 @@
                           <a class="btn btn-sm btn-outline-primary" href="{% url 'register' %}">Sign Up</a>
                       </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-success" href="{% url 'login' %}?next=/&login=true&nis=true">
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'login' %}?next=/&login=true&nis=true">
                             Log in <i class="fas fa-sign-in"></i>
                           </a>
                         </li>

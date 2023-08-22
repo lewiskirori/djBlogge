@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title>Blog post / djBlogge</title>
+<title>Post | djBlogge</title>
 
 {% extends 'base.htm' %}
 
@@ -65,16 +65,17 @@
     color: #2e3339;
     font-family: "Playfair Display", Georgia, "Times New Roman", serif;
     text-decoration: none;
-    border: 1px dotted #2e3339;
+    border: 1px solid #2e3339;
     border-radius: 4px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
     font-size: 16px;
     margin: 5px;
     }
 
     .update-blog:hover {
-    border: 1px solid #2e3339;
-    color: #2e3339;
+    background-color: #2e3339;
+    color: #fff;
+    border: 1px solid transparent;
     }
 </style>
 
@@ -87,7 +88,7 @@
                 <p class="card-text">{{blog_post.body|safe}}</p>
                 {% if blog_post.author == request.user %}
                     <a href="{% url 'blog:edit' blog_post.slug %}" class="update-blog">
-                        <i class="far fa-edit"></i> Edit blog
+                        <i class="far fa-edit"></i> Edit post
                     </a>
                 {% endif %}
             </div>

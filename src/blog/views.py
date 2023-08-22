@@ -22,7 +22,7 @@ def create_blog_view(request):
         obj.author = author
         obj.save()
         form = CreateBlogPostForm()
-        context['success_message'] = 'Congrats! Your blog post has been published.'
+        context['success_message'] = 'Congrats! Your post has been published.'
     
     else:
         form = CreateBlogPostForm()
@@ -60,7 +60,7 @@ def edit_blog_view(request, slug):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            context['success_message'] = "Masterpiece blog post was updated successfully!"
+            context['success_message'] = "Masterpiece post was successfully updated!"
             blog_post = obj
             return redirect('blog:detail', slug=blog_post.slug)
 

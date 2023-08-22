@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title>Blog / Create post</title>
+<title>New post | djBlogge</title>
 
 {% extends 'base.htm' %}
 
@@ -88,9 +88,16 @@ color: #fff;
 border: 1px solid rgba(0, 123, 255, 0.5);
 border-radius: 2px;
 cursor: pointer;
+transition: background-color 0.3s ease;
 font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 letter-spacing: 2px;
 }
+
+.submit-button:hover {
+background-color: #1a1d20;
+text-decoration: none;
+color: #fff;
+} 
 
 .success-message {
 margin-top: 5px;
@@ -134,24 +141,24 @@ font-size: 2rem;
             <form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
 
                 <h2 style="text-align: center; margin-bottom: 30px; font-weight: 600;font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;color: #2e3339;">
-                    Create a Blog Post
+                    Create a New Post
                 </h2>
 
                 <div class="form-group">
                     <label for="id_title">Title:</label>
-                    <input class="form-control" type="text" name="title" id="id_title" placeholder="Your concise title" required autofocus>
+                    <input class="form-control" type="text" name="title" id="id_title" placeholder="E.g. “Past for Future Generations”" required autofocus>
                 </div>
 
                 <div class="form-group">
                     <label for="id_body">Content:</label>
-                    <textarea class="form-control" rows="10" name="body" id="id_body" placeholder="This blog is about..." required></textarea>
+                    <textarea class="form-control" rows="10" name="body" id="id_body" placeholder="What is happening?! This post is about..." required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="id_image">Image:</label>
                     <div class="file-input">
                       <input type="file" name="image" id="id_image" accept="image/*" required>
-                      <label class="button" for="id_image"><i class="fas fa-upload"></i> Photo upload</label>
+                      <label class="button" for="id_image"><i class="fas fa-upload"></i> Upload</label>
                       <img class="preview-image" src="#" alt="Preview Image">
                     </div>
                 </div>

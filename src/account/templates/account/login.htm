@@ -107,36 +107,20 @@
     transition: all 0.1s ease-in-out;
     }
 
-    @keyframes glow {
-        0% {
-          box-shadow: none;
-        }
-        50% {
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-        }
-        100% {
-          box-shadow: none;
-        }
-    }
-
-    button:focus {
-    animation: glow 1s ease-in-out infinite;
-    }
-
     .fa-spin-pulse {
     color: #fff;
     }
 
-    .login-link {
+    .forgot-link {
     text-decoration: none;
     font-size: smaller;
     }
 
-    .login-link:hover {
+    .forgot-link:hover {
     color: #007bff;
     }
 
-    .login-link:active {
+    .forgot-link:active {
     padding: 2px auto; 
     background-color: rgba(0, 123, 255, 0.1); 
     border-radius: 4px;
@@ -150,31 +134,35 @@
     position: relative;
     font-size: 97%;
     font-weight: 600;
+    padding-bottom: 5px;
     }
 
     .text-center {
-     font-size: 90%;
+    font-size: 90%;
     }
 
     .register-link::before {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -2px;
-    height: 2px;
-    width: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
     background-color: #007bff;
-    transition: width 0.3s ease-in-out;
+    border-radius: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
     }
 
     .register-link:hover::before {
-    width: 100%;
+    transform: scaleX(1);    
     }
 </style>
 
 <main class="form-signin w-100 m-auto">
     <form method="POST" onsubmit="submitButton.disabled = true; submitButton.innerHTML = '<i class=\'spinner-border spinner-border-sm\'></i>';">{% csrf_token %}
-      <h1 class="h3 mb-3 fw-normal">Welcome back!</h1>
+      <h1 class="h3 mb-3 fw-normal">Welcome back</h1>
       <h6>Glad to see you again!</h6>
   
       <div class="form-floating">
@@ -226,7 +214,7 @@
                 <label class="form-check-label" for="rememberMeCheckbox">Remember Me</label>
               </div>
               <div>
-                <a href="{% url 'password_reset' %}" class="login-link">Forgot Password?</a>
+                <a href="{% url 'password_reset' %}" class="forgot-link">Forgot Password?</a>
               </div>
             </div>
         </div>          

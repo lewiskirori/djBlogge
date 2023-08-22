@@ -1,4 +1,4 @@
-<title>Authentication / djBlogge</title>
+<title>Authentication | djBlogge</title>
 
 {% extends 'base.htm' %}
 
@@ -26,7 +26,7 @@ padding: 10px 20px;
 background-color: #2e3339;
 color: #fff;
 text-decoration: none;
-border: none;
+border: 1px solid transparent;
 border-radius: 4px;
 transition: background-color 0.2s;
 font-family: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
@@ -36,8 +36,9 @@ cursor: pointer;
 }
 
 .buttn:hover {
-background-color: #1f2428;
-color: #fff;
+background-color: #fff;
+color: #2e3339;
+border: 1px solid #2e3339;
 }
 
 .container p {
@@ -61,11 +62,11 @@ margin: 0 5px;
 <div class="container">
     <div class="d-flex flex-column">
         <img class="img-fluid d-block m-auto pb-2" src="../../../static/djBlogge-icon.png" width="22" height="22">
-        <p class="m-auto" style="font-size: 20px; font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;">
+        <p class="m-auto" style="font-size: 20px;">
             This page requires verification to ensure your privacy and security.
         </p>
-        <p class="m-auto" style="font-size: 16px; color: #666;">
-            Please sign in or create an account to access the full content and personalized features.
+        <p class="m-auto" style="font-size: 16px; font-family:Nunito,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji; color: #666;">
+            For complete access to the content and specially tailored features, please sign in or create an account.
         </p>
         <p class="m-auto">
             <a id="signup-button" class="buttn">
