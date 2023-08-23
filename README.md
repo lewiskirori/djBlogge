@@ -1,5 +1,5 @@
 ## djBlogge
-### `Your fantastic all-round blogging hub`
+### `Your exquisite all-round content hub`
 
 
 
