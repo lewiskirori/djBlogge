@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Sign up | djBlogge</title>
+
+{% extends 'base.htm' %}
+
+{% load static %}
+
+{% block content %}
+
+<style text="text/css">
+    .h3, h6{
+    text-align: center;
+    }
+
+    h6 {
+    font-family: 'Josefin Sans', sans-serif;
+    }
+
+    body {
+    background-color: #f5f5f5;
+    font-family: 'Josefin Sans', sans-serif;
+    }
+    
+    .form-signin {
+    max-width: 330px;
+    padding: 15px;
+    }
+
+    .form-signin .form-floating:focus-within {
+    z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="text"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    }
+    
+    .form-floating {
+    position: relative;
+    color: #bbb;
+    }
+    
+    .form-floating input {
+    padding-right: 40px;
+    }
+
+    .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    }
+
+    .password-toggle:before {
+    content: "\f06e";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 20px;
+    color: #bbb;
+    }
+
+    .password-toggle.show:before {
+    content: "\f070";
+    color: rgba(0, 123, 255, 0.5);
+    }
+
+    button {
+		background-color: #2e3339;
+    color: #f5f5f5;
+		font-weight: 600;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    transition: all 0.1s ease-in-out;
+		}
+
+    .fa-spin-pulse {
+    color: #fff;
+    }
+
+    .login-link {
+    color: #007bff;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0;
+    position: relative;
+    font-size: 97%;
+    font-weight: 600;
+    padding-bottom: 5px;
+    }
+
+    .text-center {
+    font-size: 90%;
+    }
+
+    .login-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #007bff;
+    border-radius: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    }
+
+    .login-link:hover::before {
+    transform: scaleX(1);    
+    }
+</style>
+
+<main class="form-signin w-100 m-auto">
+    <form method="POST" onsubmit="submitButton.disabled = true; submitButton.innerHTML = '<i class=\'spinner-border spinner-border-sm\'></i>';">{% csrf_token %}
+      <h1 class="h3 mb-3 fw-normal">Create your account</h1>
+      <h6>Join our extraordinary content hub today!</h6>
+  
+        <div class="form-group">
+          <div class="form-floating">
+              <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="{{ registration_form.email.value|default:'' }}" autocomplete="email">
+              <label for="floatingInput">Email Address</label>
+          </div>
+          {% for error in registration_form.email.errors %}
+            <div class="alert alert-danger" role="alert">
+              <i class="fas fa-exclamation-circle"></i> {{ error }}
+            </div>            
+          {% endfor %}
+        </div>
+      
+        <div class="form-group">
+            <div class="form-floating">
+                <input type="text" name="username" class="form-control" id="floatingInput" maxlength="11" placeholder="Username" value="{{ registration_form.username.value|default:'' }}" autocomplete="username">
+                <label for="floatingInput">Username</label>
+            </div>
+            {% for error in registration_form.username.errors %}
+              <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+              </div>            
+            {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            <div class="form-floating">
+                <input type="password" name="password1" class="form-control" id="password-input1" placeholder="Password" maxlength="25">
+                <label for="password-input1">Password</label>
+                <span toggle="#password-input1" class="password-toggle"></span>
+            </div>
+            {% for error in registration_form.password1.errors %}
+              <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+              </div>            
+            {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            <div class="form-floating">
+                <input type="password" name="password2" class="form-control" id="password-input2" placeholder="Confirm Password" maxlength="25">
+                <label for="password-input2">Confirm Password</label>
+                <span toggle="#password-input2" class="password-toggle"></span>
+            </div>
+            {% for error in registration_form.password2.errors %}
+              <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+              </div>            
+            {% endfor %}
+        </div>
+
+        <script>
+          $(document).ready(function () {
+              $('.password-toggle').on('mousedown touchstart', function () {
+                  const passwordInput1 = $($(this).attr('toggle'));
+                  $(this).addClass('show');
+                  passwordInput1.attr('type', 'text');
+              }).on('mouseup touchend', function () {
+                  const passwordInput1 = $($(this).attr('toggle'));
+                  $(this).removeClass('show');
+                  if (!$(this).hasClass('show')) {
+                      passwordInput1.attr('type', 'password');
+                  }
+              });
+          });
+          $(document).ready(function () {
+              $('.password-toggle').on('mousedown touchstart', function () {
+                  const passwordInput2 = $($(this).attr('toggle'));
+                  $(this).addClass('show');
+                  passwordInput2.attr('type', 'text');
+              }).on('mouseup touchend', function () {
+                  const passwordInput2 = $($(this).attr('toggle'));
+                  $(this).removeClass('show');
+                  if (!$(this).hasClass('show')) {
+                      passwordInput2.attr('type', 'password');
+                  }
+              });
+          });
+        </script>
+        
+        {% if registration_form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ registration_form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <div>
+            <button class="w-100" type="submit" name="submitButton">
+                Get Started
+            </button>
+        </div>    
+        <hr class="my-4" style="width: 80%;margin: 0 auto;height: 2px;">
+
+        <div class="text-center">
+          Already have an account? <a href="{% url 'login' %}?next=/&login=true&nis=true" class="login-link">Log in here</a>
+        </div>
+    </form>
+</main>  
+    
+{% endblock content %}

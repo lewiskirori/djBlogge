@@ -1,0 +1,200 @@
+
+<style type="text/css">
+    .card {
+    background-color: transparent;
+    max-width: 900px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    }
+
+    .card-img-top {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+    object-fit: cover;
+    margin-bottom: -20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.2s;
+    }
+
+    .card-img-top:focus,
+    .card-img-top:active {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .card-body {
+    padding: 20px;
+    }
+
+    .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    }
+    
+    .card-title {
+    border-bottom: 1px solid #e5e5e5;
+    font-family: 'Josefin Sans', sans-serif;
+    color: inherit;
+    outline: none;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    }
+
+    .card-title::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5;
+    transition: width 0.2s, background-color 0.2s;
+    }
+
+    .card-title:hover::before {
+    width: 100%;
+    background-color: #e5e5e5;
+    }
+
+    .card-title:active {
+    padding: 2px auto; 
+    background-color: rgba(108, 117, 125, 0.2);
+    border-radius: 4px;
+    }
+
+    .card-title:hover {
+    color: inherit;
+    }
+    
+    .card-text {
+    color: #888;
+    margin-bottom: 20px;
+    font-size: large;
+    }
+    
+    .unleash-Btn {
+    background-color: #2e3339;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: smaller;
+    outline: none;
+    }
+    
+    .unleash-Btn:hover {
+    background-color: #1a1d20;
+    text-decoration: none;
+    color: #fff;
+    }
+    
+    .card-footer {
+    background-color: transparent;
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #999;
+    }
+
+    .footer-text {
+    font-style: italic;
+    font-weight: 600;
+    }
+    
+    .container {
+    margin-top: 5px;
+    }
+
+    .explore-link {
+    color: #007bff;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0;
+    position: relative;
+    font-size: 90%;
+    font-weight: 600;
+    padding-bottom: 3px;
+    cursor: pointer;
+    }
+
+    .explore-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 100%;
+    background-color: #007bff;
+    border-radius: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    }
+
+    .explore-link:hover::before {
+    transform: scaleX(1);    
+    }
+</style>
+
+{% if blog_post %}
+<div class="container">
+    <div class="row">
+        <div class="card m-auto">
+            <a href="{% url 'blog:detail' post.slug %}">
+                <img class="card-img-top" src="{{blog_post.image.url}}" alt="{{blog_post.title}}">
+            </a>
+            <div class="card-body mt-2 mb-2">
+                <div class="content-container">
+                    <a href="{% url 'blog:detail' post.slug %}" class="card-title">{{blog_post.title}}</a>
+                    <p class="card-text">{{blog_post.body|safe|truncatechars:250}}</p>
+                    {% if blog_post.author == request.user %}
+                        <a href="{% url 'blog:edit' blog_post.slug %}" class="unleash-Btn">
+                            <i class="far fa-edit"></i> Revise your post
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="footer-text">Forever dazzling the djBloggesphere!</span> Posted by <strong>{{blog_post.author}}</strong> on <strong>{{blog_post.date_updated}}</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="card m-auto">
+            <div class="card-body mt-2 mb-2">
+                <h2 class="card-title">
+                    Couldn't find "{{query}}"
+                </h2>
+                <p class="card-text">
+                    Try searching again using a different spelling, keyword, or 
+                    <a class="explore-link">explore</a> for more content.
+                </p>
+                <p class="card-text"></p>            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const exploreLink = document.querySelector('.explore-link');
+
+    exploreLink.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const exploreUrl = "{% url 'home' %}";
+
+        window.location.href = exploreUrl;
+    });
+</script>
+{% endif %}

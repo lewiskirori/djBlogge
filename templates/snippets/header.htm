@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-ylrTft8rR7tRwHbnCvzWs+YThYgX9ytZ+t3lqGzKRjm2QimLGy7cMf3I37V7PBl5QbxuXmGeEIfCYxuV7pOZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-MY4UshweZcQ+GpgfJnC6tyMdu+65SDy3q3++7ivg5Q5lG7IuzH6D9x7gAOhWzjJyH48t01LJw7m+gThYm1Z9zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alike&family=Arbutus+Slab&family=Josefin+Sans&family=Libre+Baskerville&family=Merriweather&family=Nunito:ital,wght@0,200;1,200;1,400;1,900&family=PT+Serif&family=Schibsted+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=S%C3%B6hne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <style type="text/css">
+      .blog-header {
+      border-bottom: 1px solid #e5e5e5;
+      }
+
+      .blog-header-logo {
+      font-family: 'Alike', serif;
+      font-size: 2.25rem;
+      color: inherit;
+      outline: none;
+      text-decoration: none;
+      position: relative;
+      }
+
+      .blog-header-logo::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #e5e5e5;
+      transition: width 0.2s, background-color 0.2s;
+      }
+
+      .blog-header-logo:hover::before {
+      width: 100%;
+      background-color: #e5e5e5;
+      }
+
+      .blog-header-logo:active {
+      padding: 2px auto; 
+      background-color: rgba(108, 117, 125, 0.2);
+      border-radius: 4px;
+      }
+
+      .blog-header-logo:hover {
+      color: inherit;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+      font-family: 'Josefin Sans', sans-serif;
+      }
+
+      p {
+      font-family: 'Josefin Sans', sans-serif;
+      }
+
+      .display-4 {
+      font-size: 2.5rem;
+      }
+
+      #search-input {
+      display: none;
+      }
+
+      .navbar-collapse {
+      transition: height 0.7s ease-in-out;
+      }
+
+      .navbar-nav {
+      align-items: flex-end;
+      margin: 2px;
+      }
+
+      .navbar-toggler {
+      margin: 2px;
+      padding: 2px 8px;
+      }
+
+      .btn-outline-success:hover .arrow-icon {
+      animation: arrow-move 0.7s ease-in-out 1 forwards;
+      }
+
+      @keyframes arrow-move {
+        0% {
+        transform: translateX(0);
+        }
+        50% {
+        transform: translateX(5px);
+        }
+        100% {
+        transform: translateX(2px);
+        }
+      }
+
+      .btn-outline-danger,
+      .btn-outline-secondary,
+      .btn-outline-primary,
+      .btn-outline-info,
+      .btn-outline-success {
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 9px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+      border-radius: 5px;
+      border: 2px solid;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      color: #fff;
+      }
+
+      .btn-outline-danger {
+      border-color: #dc3545;
+      color: #dc3545;
+      background-color: rgba(220, 53, 69, 0.2);
+      margin: 2px;
+      }
+
+      .btn-outline-success {
+      border-color: #28a745;
+      color: #28a745;
+      background-color: rgba(40, 167, 69, 0.2);
+      margin: 2px;
+      }
+
+      .btn-outline-primary {
+      border-color: #007bff;
+      background-color: #007bff;
+      margin: 2px;
+      }
+
+      .btn-outline-info {
+      border-color:  #17a2b8;
+      background-color: #17a2b8;
+      margin: 2px;
+      }
+
+      .btn-outline-secondary {
+      border-color: #6c757d;
+      background-color: #6c757d;
+      margin: 2px;
+      }
+
+      .btn-outline-danger:hover {
+      border-color: #dc3545;
+      background-color: #dc3545;
+      }
+
+      .btn-outline-success:hover {
+      border-color: #28a745;
+      background-color: #28a745;
+      }
+
+      .btn-outline-primary:hover {
+      border-color: #007bff;
+      color: #007bff;
+      background-color: rgba(0, 123, 255, 0.2);
+      }
+
+      .btn-outline-info:hover {
+      border-color: #17a2b8;
+      color: #17a2b8;
+      background-color: rgba(23, 162, 184, 0.2);
+      }
+
+      .btn-outline-secondary:hover {
+      border-color: #6c757d;
+      color: #6c757d;
+      background-color: rgba(108, 117, 125, 0.2);
+      }
+
+      @media (min-width: 768px) {
+        .display-4 {
+        font-size: 3rem;
+        }
+      }
+
+      .flex-auto {
+      flex: 0 0 auto;
+      }
+
+      .h-250 {
+      height: 250px;
+      }
+
+      @media (min-width: 768px) {
+        .h-md-250 {
+        height: 250px;
+        }
+      }
+
+      /* Search */
+      .search-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+      }
+
+      .search-form-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 500px;
+      background-color: #121212;
+      border: 1px solid #303030;
+      border-radius: 24px;
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+      box-shadow: 2px 2px 30px rgba(167, 158, 245, 0.2);      
+      padding: 4px 14px;
+      font-family: 'Josefin Sans', sans-serif;
+      }
+
+      .search-form-container:focus-within {
+      border: 1px solid rgba(0, 123, 255, 0.5);
+      }
+
+      .search-form input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      outline: none;
+      color: #fff;
+      background-color: transparent;
+      }
+
+      .search-form buttton {
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      padding: 10px;
+      cursor: pointer;
+      outline: none;
+      }
+
+      .search-icon {
+      position: inline-block;
+      float: right;
+      border: 1px solid #303030;
+      top: 50%;
+      right: 8px;
+      padding: 8px 10px;
+      background-color: #2e3339;
+      color: #f5f5f5;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      }
+
+      .search-icon:hover {
+      background: none;
+      transform: scale(1.1);
+      transition: transform 0.2s ease-in-out;
+      }
+
+      .search-icon:active {
+      color: #2e3339;
+      border: 1px solid rgba(0, 123, 255, 0.5);
+      background-color: #f5f5f5;
+      transform: scale(1.1);
+      transition: transform 0.2s ease-in-out;
+      }
+
+      .search-button {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%) scale(1.4);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      }
+
+      .search-button:hover:before {
+      content: "";
+      position: absolute;
+      border-radius: 50px;
+      top: -10px;
+      right: -14px;
+      bottom: -10px;
+      left: -8px;
+      background-color: rgba(96, 96, 96, 0.1);
+      transition: transform 0.2s ease-in-out;
+      }
+
+      .close-button {
+      position: absolute;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%) scale(1);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: none;
+      font-size: 700;
+      background-color: transparent;
+      transition: transform 0.2s ease-in-out;
+      }
+
+      .close-button:hover {
+      transform: translateY(-50%) scale(1.4);
+      }
+
+      @media screen and (max-width: 767px) {
+        .search-form input[type="search"] {
+        width: 100%;
+        }
+
+        .blog-header-logo {
+        font-size: 1.4rem;
+        }
+
+        .link-secondary, h6 {
+        font-size: smaller;
+        }
+
+        .display-4 {
+        font-size: 1.3rem;
+        }
+
+        .lead {
+        font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+
+  {% load static %}
+
+  <body>
+    <!--- Header --->
+    <div class="container-fluid">
+      <header class="blog-header lh-1 py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 pt-1">
+            {% if request.user.is_authenticated %}
+              {% load tz %}
+              {% timezone "Africa/Nairobi" %}
+                {% now "H" as hour %}
+                {% if hour|default:""|length > 0 %}
+                  {% with hour=hour|default:"0" %}
+                    {% if hour|add:0 < 12 %}
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight: 600;">Good Morning</p> <p class="Morning-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                    {% elif hour|add:0 < 16 %}
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight: 600;">Good Afternoon</p> <p class="Noon-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                    {% elif hour|add:0 < 22 %}
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight: 600;">Good Evening</p> <p class="Evening-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                    {% else %}
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight: 600;">Good Night</p> <p class="Night-User" style="font-family:inherit;margin:auto;font-size:14px;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                    {% endif %}
+                  {% endwith %}
+                {% endif %}
+              {% endtimezone %}
+            {% else %}
+            {% now "l, F jS" as current_date %}
+              <div class="current-date" style="font-family:'Josefin Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.03rem;">
+                {{ current_date }}
+              </div>
+            {% endif %}
+          </div>            
+          <div class="col-4 text-center">
+            <a class="blog-header-logo">
+              djBlogge
+            </a>
+          </div>
+
+          <script>
+            const logoLink = document.querySelector('.blog-header-logo');
+            const logoHref = '';
+        
+            logoLink.setAttribute('href', logoHref);
+          </script>
+
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            {% if request.user.is_authenticated %}
+                <div class="row justify-content-end align-items-center"> 
+                  <!-- Navigation menu -->
+                  <nav class="navbar navbar-expand-lg d-flex justify-content-end align-items-center">
+                    <button class="navbar-toggler navbar-toggler-right border-0" type="navGrid" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                      <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                      </svg>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                      <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                          <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" title="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="{{request.user.username}}" title="{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
+                        </li>
+                        <li class="nav-item">
+                          <form id="logout-form" action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                          <a id="logout-button" class="btn btn-sm btn-outline-danger"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
+                          </form>
+                        </li>
+                          <script>
+                            const logoutButton = document.querySelector('#logout-button');
+
+                            logoutButton.addEventListener('click', () => {
+                              logoutButton.disabled = true;
+                              logoutButton.innerHTML = '<i class="spinner-border spinner-border-sm"></i> Logging out...';
+
+                              setTimeout(() => {
+                                document.getElementById('logout-form').submit();
+                              }, 2000); 
+                              });
+                          </script>
+                      </ul>
+                    </div>
+                  </nav>
+
+                  <script>
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                  
+                    navbarToggler.addEventListener('click', () => {
+                      const isOpen = navbarToggler.getAttribute('data-nav-open') === 'true';
+                      navbarToggler.setAttribute('data-nav-open', !isOpen);
+                      navbarCollapse.classList.toggle('show', !isOpen);
+                    });
+
+                    document.addEventListener('click', (event) => {
+                          if (navbarCollapse.classList.contains('show') && !navbarToggler.contains(event.target)) {
+                              navbarCollapse.classList.remove('show');
+                          }
+                      });
+                  </script>
+
+                  <!-- Search icon -->
+                  <div class="search-icon-container">
+                    <a class="search-icon" data-tippy-content="Show search"><i class="fas fa-search"></i></a>
+                  </div>
+
+                  <!-- Search overlay -->
+                  <div class="search-overlay">
+                    <div class="search-form-container">
+                      <!-- Search form -->
+                      <form method="get" class="search-form">
+                        <div class="input-container">
+                          <input type="text" placeholder="Search djBlogge"  maxlength="31" name="search_q" id="id_searchq" aria-label="Search" autocomplete="off">
+                          <buttton class="search-button" data-tippy-content="Search" type="submit"><i class="fas fa-search"></i></buttton>
+                          <button class="close-button" type="button"><i class="fas fa-close"></i></button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                  <!-- Search q script -->
+                  <script>
+                      const searchIcon = document.querySelector('.search-icon');
+                      const searchOverlay = document.querySelector('.search-overlay');
+                      const closeButton = document.querySelector('.close-button');
+                      const searchInput = document.querySelector('.search-form input[type="text"]');
+                      const searchButton = document.querySelector('.search-button');
+
+                      searchIcon.addEventListener('click', () => {
+                        searchOverlay.style.display = 'block';
+                        searchInput.focus();
+
+                        searchOverlay.addEventListener('click', (event) => {
+                          if (event.target === searchOverlay) {
+                            searchOverlay.style.transition = 'opacity 0.3s ease';
+                            searchOverlay.style.opacity = '0';
+
+                            setTimeout(() => {
+                              searchOverlay.style.display = 'none';
+                              searchOverlay.style.opacity = '1';
+                              searchOverlay.style.transition = 'none';
+                            }, 300);
+                          }
+                        });
+                      });
+
+                      closeButton.addEventListener('click', () => {
+                        searchOverlay.style.display = 'none';
+                        searchInput.value = '';
+                      });
+
+                      searchInput.addEventListener('input', () => {
+                        if (searchInput.value.length > 0) {
+                          closeButton.style.display = 'block';
+                        } else {
+                          closeButton.style.display = 'none';
+                        }
+                      });
+
+                      searchButton.addEventListener('click', () => {
+                        const form = document.querySelector('.search-form');
+                        form.submit();
+                      });
+
+                      document.getElementById("id_searchq").value = "{{query}}"
+                  </script>
+                </div>
+            {% else %}
+              <nav class="navbar navbar-expand-lg d-flex justify-content-end align-items-center">
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                  <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                  </svg>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" title="djBlogge">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="btn btn-sm btn-outline-primary" href="{% url 'register' %}">Sign Up</a>
+                      </li>
+                        <li class="nav-item">
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'login' %}?next=/&login=true&nis=true">
+                            Log in <i class="fas fa-sign-in"></i>
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+              </nav>
+              
+              <script>
+                const navbartoggler = document.querySelector('.navbar-toggler');
+                const navbarcollapse = document.querySelector('.navbar-collapse');
+              
+                navbartoggler.addEventListener('click', () => {
+                  const isOpen = navbartoggler.getAttribute('data-nav-open') === 'true';
+                  navbartoggler.setAttribute('data-nav-open', !isOpen);
+                  navbarcollapse.classList.toggle('show', !isOpen);
+                });
+
+                document.addEventListener('click', (event) => {
+                      if (navbarcollapse.classList.contains('show') && !navbartoggler.contains(event.target)) {
+                          navbarcollapse.classList.remove('show');
+                      }
+                  });
+              </script>
+            {% endif %}
+          </div>
+        </div>
+      </header>
+    </div>
+  </body>
+  <!--- EndHeader --->

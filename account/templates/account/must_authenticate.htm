@@ -1,0 +1,102 @@
+<title>Authentication | djBlogge</title>
+
+{% extends 'base.htm' %}
+
+{% block content %}
+
+<style>
+.container {
+background-color: transparent;
+border-radius: 10px;
+padding: 40px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+max-width: 600px;
+margin: 0 auto;
+margin-top: 30px;
+}
+
+.m-auto {
+text-align: center;
+margin: 20px auto;
+}
+
+.buttn {
+display: inline-block;
+padding: 12px 24px;
+background-color: #2e3339;
+color: #fff;
+text-decoration: none;
+border: 1px solid transparent;
+border-radius: 4px;
+transition: background-color 0.2s;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 18px;
+margin: 10px;
+cursor: pointer;
+}
+
+.buttn:hover {
+background-color: #fff;
+color: #2e3339;
+border: 1px solid #2e3339;
+}
+
+.container p {
+margin-bottom: 20px;
+}
+
+.container .m-auto:last-child {
+margin-bottom: 0;
+}
+
+.container .m-auto a {
+text-decoration: none;
+}
+
+.container .m-auto .or-text {
+color: #666;
+margin: 0 10px;
+}
+</style>
+
+<div class="container">
+    <div class="d-flex flex-column">
+        <img class="img-fluid d-block m-auto pb-2" src="../../../static/djBlogge-icon.png" width="22" height="22">
+        <p class="m-auto" style="font-size: 20px;">
+            This page requires verification to ensure your privacy and security.
+        </p>
+        <p class="m-auto" style="font-size: 16px; font-family:'Josefin Sans',sans-serif; color: #666;">
+            For complete access to the content and specially tailored features, please sign in or create an account.
+        </p>
+        <p class="m-auto">
+            <a id="signup-button" class="buttn">
+                <i class="fas fa-user-plus"></i> Sign up
+            </a>
+            <span class="or-text">or</span>
+            <a id="signin-button" class="buttn">
+                <i class="fas fa-user-lock"></i> Sign in
+            </a>
+        </p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var signUpButton = document.getElementById("signup-button");
+        var signInButton = document.getElementById("signin-button");
+
+        signUpButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log("Clicked on Sign up");
+            window.location.href = "/register";
+        });
+
+        signInButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log("Clicked on Sign in");
+            window.location.href = "/login?next=/&must_authenticate=true"; 
+        });
+    });
+</script>
+    
+{% endblock content %}

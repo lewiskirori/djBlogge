@@ -1,0 +1,143 @@
+{% extends 'base.htm' %}
+
+{% load static %}
+
+{% block content %}
+<style type="text/css">
+	@media (max-width: 768px) { 
+		.right-column {
+		margin-left: 0px;
+		}
+		.create-post-bar .lead {
+		font-size: 13px;
+		}
+		.create-post-bar .create-post-btn {
+		font-size: smaller;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column {
+		margin-left: 20px;
+		}
+	}
+
+	.blog-post-container{
+	margin-bottom: 20px;
+	width: 100%;
+	}
+
+	.card {
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+	border: 1px solid #fff;
+	}
+
+	.create-post-bar {
+	background-color: transparent;
+	margin-bottom:20px;
+	}
+
+	.create-post-btn {
+	padding: 10px 20px;
+	background-color: #2e3339;
+	color: #ffffff;
+	font-family: 'Josefin Sans', sans-serif;
+	text-decoration: none;
+	border: none;
+	border-radius: 2px;
+	transition: background-color 0.2s;
+	font-size: 16px;
+	margin-top: 10px;
+	cursor: pointer;
+	outline: none;
+	}
+
+	.create-post-btn:hover {
+	color: #fff;
+	background-color: #1a1d20;
+	}
+
+	.left-column, 
+	.right-column {
+	margin-top: 10px;
+	}
+
+	.left-column .lead {
+	padding: 0px;
+	text-align: center;
+	}
+
+	.right-column .lead {
+	text-align: center;
+	padding: 0px;
+	}
+
+	.lead {
+	font-size: 17px;
+	font-family: 'Josefin Sans', sans-serif;
+	letter-spacing: 0.1px;
+	font-weight: 500;
+	}
+
+	#sticky-column {
+	position: sticky;
+	top: 20px;
+	}
+</style>
+
+<!-- Main content -->
+<div class="container">
+	<div class="row">
+
+		<!-- Blog feed -->
+		<div class="left-column col-lg-7 offset-lg-1">
+			<!-- Top 'create post' bar -->
+			<div class="d-lg-none mb-3">
+				<div class="card m-auto d-flex flex-column p-3 create-post-bar">
+					<img class="img-fluid d-block m-auto pb-2" src="{% static 'djBlogge-icon.png' %}" width="22" height="22">
+					<p class="lead">Ready to dive into your creative genius? Join our extraordinary content hub and let your imagination run wild. In this inclusive space, everyone is welcomed. With our easy-to-use powerful features, you’ll be crafting fascinating posts and content in no time!</p>
+					<p class="m-auto">
+						<a class="create-post-btn" href="{% url 'blog:create' %}">
+							<i class="fas fa-pencil-alt"></i> Compose
+						</a>
+					</p>
+				</div>
+			</div>
+			<!-- end Top 'create post' bar -->
+
+			<!-- Blog posts-->
+			{% if blog_posts %}
+				{% for post in blog_posts %}
+					<div class="blog-post-container">
+						{% include 'blog/snippets/blog_post_snippet.htm' with blog_post=post %}
+					</div>
+				{% endfor %}
+			{% else %}
+				<div class="blog-post-container">
+					{% include 'blog/snippets/blog_post_snippet.htm' with query=query %}
+				</div>
+			{% endif %}
+			<!-- End Blog posts-->
+
+			<!-- Pagination -->
+			{% include 'blog/snippets/blog_post_pagination.htm' with blog_posts=blog_posts %}	
+		</div>
+		<!-- end Blog feed -->
+
+		<!-- Right 'create post' column  -->
+		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+			<div class="card create-post-bar d-flex flex-column p-3" id="sticky-column">
+				<img class="img-fluid d-block m-auto pb-2" src="{% static 'djBlogge-icon.png' %}" width="42" height="42">
+				<p class="lead">Ready to dive into your creative genius? Join our extraordinary content hub and let your imagination run wild. In this inclusive space, everyone is welcomed. With our easy-to-use powerful features, you’ll be crafting fascinating posts and content in no time!</p>
+        		<p class="m-auto">
+					<a class="create-post-btn" href="{% url 'blog:create' %}">
+						<i class="fas fa-pencil-alt"></i> Compose
+					</a>
+				</p>
+			</div>
+		</div>
+		<!-- end Right 'create post' column  -->
+	</div>
+</div>
+
+{% endblock content %}
