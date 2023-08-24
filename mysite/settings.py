@@ -84,14 +84,13 @@ AUTH_USER_MODEL = 'account.Account'
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
-
     'default' : {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'containers-us-west-40.railway.app',
-        'PORT': '6310',
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'railway',
+        'USER':'postgres',
+        'PASSWORD':'xil3BHT0ZL4RVBxTorea',
+        'HOST':'containers-us-west-40.railway.app',
+        'PORT':'6310',
     }
 }
 
