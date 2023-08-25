@@ -147,7 +147,7 @@
     <div class="row">
         <div class="card m-auto">
             <a href="{% url 'blog:detail' post.slug %}">
-                <img class="card-img-top" src="{{blog_post.image.url}}" alt="{{blog_post.title}}">
+                <img class="card-img-top" src="{{ MEDIA_URL }}blog/{{ blog_post.image }}" alt="{{blog_post.title}}">
             </a>
             <div class="card-body mt-2 mb-2">
                 <div class="content-container">
