@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['djblogge.up.railway.app', 'djblogge.railway.internal', '127.0.0.1', 'localhost']
 
 if DEBUG:
     #During development only
@@ -145,7 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_COOKIE_SECURE = True
 
-# Set session timeout to 1 hour (in seconds)
+# Session timeout to 1 hour (in seconds)
 SESSION_COOKIE_AGE = 3600 
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
