@@ -137,7 +137,8 @@
 </style>
 
 <main class="form-signin w-100 m-auto">
-    <form method="POST" onsubmit="submitButton.disabled = true; submitButton.innerHTML = '<i class=\'spinner-border spinner-border-sm\'></i>';">{% csrf_token %}
+    <form method="POST" onsubmit="submitButton.disabled = true; submitButton.innerHTML = '<i class=\'spinner-border spinner-border-sm\'></i>';">
+      {% csrf_token %}
       <h1 class="h3 mb-3 fw-normal">Create your account</h1>
       <h6>Join our extraordinary content hub today!</h6>
   
