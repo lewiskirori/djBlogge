@@ -5,7 +5,7 @@ from operator import attrgetter
 from blog.models import BlogPost
 from blog.views import get_blog_queryset
 
-BLOG_POSTS_PER_PAGE = 8
+BLOG_POSTS_PER_PAGE = 10
 
 def home_screen_view(request):
     context = {}
