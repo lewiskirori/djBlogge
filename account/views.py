@@ -1,9 +1,11 @@
 from datetime import datetime
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import requires_csrf_token
 from django.contrib.auth import login, authenticate, logout
 from account.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 from blog.models import BlogPost
 
+@requires_csrf_token
 def registration_view(request):
     context = {}
     if request.POST:
@@ -25,12 +27,14 @@ def registration_view(request):
     return render(request, 'account/register.htm', context)
 
 
+@requires_csrf_token
 def logout_view(request):
     logout(request)
     request.session.flush()
     return redirect('home')
 
 
+@requires_csrf_token
 def login_view(request):
     context = {}
     user = request.user
@@ -61,6 +65,7 @@ def login_view(request):
     return render(request, 'account/login.htm', context)
                     
 
+@requires_csrf_token
 def account_view(request):
     
     if not request.user.is_authenticated:
@@ -94,5 +99,6 @@ def account_view(request):
     return render(request, 'account/account.htm', context)
 
 
+@requires_csrf_token
 def must_authenticate_view(request):
     return render(request, 'account/must_authenticate.htm', {})
