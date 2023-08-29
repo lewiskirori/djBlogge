@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1', 'localhost']
 
+CSRF_TRUSTED_ORIGINS = ['https://djblogge.up.railway.app']
+
 if DEBUG:
     #During development only
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
