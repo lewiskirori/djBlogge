@@ -33,7 +33,7 @@ class AccountAuthenticationForm(forms.ModelForm):
             email = self.cleaned_data['email']
             password = self.cleaned_data['password']
             if not authenticate(email=email, password=password):
-                self.add_error('email', 'Incorrect password. Please try again.')
+                self.add_error('email', 'Invalid email or password. Please try again.')
             else:
                 self.success = f"Welcome back!"
         
