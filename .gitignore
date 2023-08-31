@@ -16,5 +16,9 @@ static/
 
 *.log
 
+gunicorn_config.py
+
+railway.yml
+
 .idea/
 .vscode/
