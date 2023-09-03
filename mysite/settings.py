@@ -20,7 +20,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1', 'localhost']
 
 if DEBUG:
-    #During development only
+    # During development only
     
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #else
@@ -28,13 +28,13 @@ if DEBUG:
 # Application definition
 
 INSTALLED_APPS = [
-    #My apps
+    # My apps
 
     'personal',
     'account',
     'blog',
     
-    #Django apps
+    # Django apps
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,9 +47,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
