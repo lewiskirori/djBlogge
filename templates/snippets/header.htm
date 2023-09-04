@@ -367,13 +367,13 @@
                 {% if hour|default:""|length > 0 %}
                   {% with hour=hour|default:"0" %}
                     {% if hour|add:0 < 12 %}
-                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Morning</p> <p class="Morning-User" style="font-family:inherit;margin:auto;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Morning,</p> <p class="Morning-User" style="font-family:inherit;margin:auto;font-weight:600;">{{ request.user.username|default:"User"|lower }} 👋</p>
                     {% elif hour|add:0 < 16 %}
-                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Afternoon</p> <p class="Noon-User" style="font-family:inherit;margin:auto;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Afternoon,</p> <p class="Noon-User" style="font-family:inherit;margin:auto;font-weight:600;">{{ request.user.username|default:"User"|lower }} 👋</p>
                     {% elif hour|add:0 < 22 %}
-                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Evening</p> <p class="Evening-User" style="font-family:inherit;margin:auto;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Evening,</p> <p class="Evening-User" style="font-family:inherit;margin:auto;font-weight:600;">{{ request.user.username|default:"User"|lower }} 👋</p>
                     {% else %}
-                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Night</p> <p class="Night-User" style="font-family:inherit;margin:auto;font-weight:600;">{{ request.user.username|default:"User"|lower }}</p>
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Night,</p> <p class="Night-User" style="font-family:inherit;margin:auto;font-weight:600;">{{ request.user.username|default:"User"|lower }} 👋</p>
                     {% endif %}
                   {% endwith %}
                 {% endif %}
