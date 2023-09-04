@@ -414,7 +414,7 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                       <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" title="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
+                          <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" data-tippy-content="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
                         </li>
                         <li class="nav-item">
                           <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="{{request.user.username}}" title="{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
@@ -422,7 +422,7 @@
                         <li class="nav-item">
                           <form id="logout-form" action="{% url 'logout' %}" method="POST">
                             {% csrf_token %}
-                          <a id="logout-button" class="btn btn-sm btn-outline-danger"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
+                          <a id="logout-button" class="btn btn-sm btn-outline-danger" data-tippy-content="Sign out"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
                           </form>
                         </li>
                           <script>
@@ -537,13 +537,13 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" title="djBlogge">Home</a>
+                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" data-tippy-content="djBlogge">Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-primary" href="{% url 'register' %}">Sign Up</a>
+                          <a class="btn btn-sm btn-outline-primary" href="{% url 'register' %}" data-tippy-content="Register here">Sign Up</a>
                       </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-info" href="{% url 'login' %}?next=/&login=true&nis=true">
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'login' %}?next=/&login=true&nis=true" data-tippy-content="Sign in">
                             Log in <i class="fas fa-sign-in"></i>
                           </a>
                         </li>
