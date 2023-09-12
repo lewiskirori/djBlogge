@@ -136,8 +136,8 @@ STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# STATIC_URL = '/static/'
-# MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
