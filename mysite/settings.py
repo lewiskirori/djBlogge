@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from storages.backends.s3boto3 import S3Boto3Storage
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -117,12 +118,26 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Configure media and static file storage
+
+AWS_STORAGE_BUCKET_NAME = 'djbloggevault'
+AWS_ACCESS_KEY_ID = 'AKIA5CDWHGUNCCELS7BW'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+# Media files (uploads)
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
 # Static files (CSS, JavaScript, Images)
+
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
