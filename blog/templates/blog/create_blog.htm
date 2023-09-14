@@ -100,7 +100,7 @@ color: #fff;
 } 
 
 .success-message {
-margin-top: 5px;
+margin-top: 10px;
 padding: 10px;
 font-family: 'Josefin Sans', sans-serif;
 background-color: #d4edda;
@@ -121,14 +121,28 @@ transition: font-size 0.3s ease;
 }
 
 .close-icon {
-border: 1px solid #fff;
-color: #fff;
-font-size: 700;
+border: 1px solid #155724;
+color: #155724;
+font-size: 20PX;
+margin-left: 10px;
 }
 
 .success-message .close-icon:hover {
-border: 1px solid #fff;
-font-size: 2rem;
+border: 1px solid #155724;
+font-size: 24px;
+}
+
+.view-post-link {
+margin-left: 10px;
+color: #155724;
+transition: background-color 0.3s ease, border-radius 0.3s ease;
+background-color: transparent;
+border-radius: 5px;
+}
+
+.view-post-link:hover {
+font-weight: bold;
+color: #155724;
 }
 </style>
 
@@ -136,6 +150,7 @@ font-size: 2rem;
     <div class="success-message">
         <i class="fas fa-check-circle"></i>
         {{ success_message }}
+        <a href="{% url 'home' %}" class="view-post-link">View Post</a>
         <button class="close-icon" type="button"><i class="fas fa-close"></i></button>
     </div>
 {% endif %}

@@ -5,16 +5,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
-
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
 DEBUG = False
 
 ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1']
@@ -26,7 +22,6 @@ if DEBUG:
 #else
 
 # Application definition
-
 INSTALLED_APPS = [
     # My apps
 
@@ -89,7 +84,6 @@ DATABASES = {
 }
 
 # Password validation
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -105,20 +99,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Africa/Nairobi'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL = '/static/'
@@ -128,24 +115,17 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 # Default primary key field type
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CSRF verification
-
 CSRF_COOKIE_SECURE = True
-
 CSRF_TRUSTED_ORIGINS = ['https://djblogge.up.railway.app']
 
 # Session timeout to 30 minutes (in seconds)
-
 SESSION_COOKIE_AGE = 1800
-
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
