@@ -22,6 +22,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 if DEBUG:
     DEBUG = False
 
+if DEBUG:
+    # During development only
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#else
+
 # Application definition
 INSTALLED_APPS = [
     # My apps
