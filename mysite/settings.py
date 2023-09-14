@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True if 'media' in os.environ.get('DEBUG_MODE', '').lower() else False
 
 ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1']
 
