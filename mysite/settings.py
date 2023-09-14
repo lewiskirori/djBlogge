@@ -17,20 +17,17 @@ ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1']
 
 if DEBUG:
     # During development only
-    
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #else
 
 # Application definition
 INSTALLED_APPS = [
     # My apps
-
     'personal',
     'account',
     'blog',
     
     # Django apps
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
