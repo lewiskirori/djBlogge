@@ -118,14 +118,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
-# Media settings
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = '005c63cd55463600000000003'
-AWS_SECRET_ACCESS_KEY = 'K005EQfpPEH2QX63xHfLc3gWwBVXSV4'
-AWS_STORAGE_BUCKET_NAME = 'djbloggevault'
-AWS_S3_REGION_NAME = 'us-east-005'  
-AWS_S3_ENDPOINT_URL = 'https://s3.us-east-005.backblazeb2.com'
-
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -1,5 +1,7 @@
-envs:
-  DJANGO_SETTINGS_MODULE: "mysite.settings"
-build:
-  commands:
-    - python manage.py collectstatic --noinput
+services:
+  web:
+    env:
+      DJANGO_SETTINGS_MODULE: "mysite.settings"
+    command: gunicorn mysite.wsgi:application 
+  media:
+    command: python manage.py runserver 0.0.0.0:8081
