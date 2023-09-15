@@ -25,7 +25,6 @@ if DEBUG:
 if DEBUG:
     # During development only
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#else
 
 # Application definition
 INSTALLED_APPS = [
