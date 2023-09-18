@@ -15,13 +15,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1']
 
-# Media settings 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
-
-if DEBUG:
-    DEBUG = False
-
 if DEBUG:
     # During development only
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -115,6 +108,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+
+# Media settings 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
