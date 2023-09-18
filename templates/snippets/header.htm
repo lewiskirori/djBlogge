@@ -367,20 +367,20 @@
                 {% if hour|default:""|length > 0 %}
                   {% with hour=hour|default:"0" %}
                     {% if hour|add:0 < 12 %}
-                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Morning,</p> <p class="Morning-User" style="font-family:'Josefin Sans',sans-serif;margin:auto;font-weight:bold;">{{ request.user.username|default:"User"|lower }} 👋</p>
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Morning,</p> <p class="Morning-User" style="font-family:'Josefin Sans',sans-serif;margin:auto;font-weight:700;">{{ request.user.username|default:"User"|lower }} 👋</p>
                     {% elif hour|add:0 < 16 %}
-                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Afternoon,</p> <p class="Noon-User" style="font-family:'Josefin Sans',sans-serif;margin:auto;font-weight:bold;">{{ request.user.username|default:"User"|lower }} 👋</p>
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Afternoon,</p> <p class="Noon-User" style="font-family:'Josefin Sans',sans-serif;margin:auto;font-weight:700;">{{ request.user.username|default:"User"|lower }} 👋</p>
                     {% elif hour|add:0 < 22 %}
-                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Evening,</p> <p class="Evening-User" style="font-family:'Josefin Sans',sans-serif;margin:auto;font-weight:bold;">{{ request.user.username|default:"User"|lower }} 👋</p>
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Evening,</p> <p class="Evening-User" style="font-family:'Josefin Sans',sans-serif;margin:auto;font-weight:700;">{{ request.user.username|default:"User"|lower }} 👋</p>
                     {% else %}
-                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Night,</p> <p class="Night-User" style="font-family:'Josefin Sans',sans-serif;margin:auto;font-weight:bold;">{{ request.user.username|default:"User"|lower }} 👋</p>
+                      <p style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.03rem;font-weight:700;">Good Night,</p> <p class="Night-User" style="font-family:'Josefin Sans',sans-serif;margin:auto;font-weight:700;">{{ request.user.username|default:"User"|lower }} 👋</p>
                     {% endif %}
                   {% endwith %}
                 {% endif %}
               {% endtimezone %}
             {% else %}
             {% now "l, F jS" as current_date %}
-              <div class="current-date" style="font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:0.03rem;">
+              <div class="current-date" style="font-family:'Josefin Sans',sans-serif;font-weight:700;">
                 {{ current_date }}
               </div>
             {% endif %}
@@ -400,8 +400,64 @@
 
           <div class="col-4 d-flex justify-content-end align-items-center">
             {% if request.user.is_authenticated %}
-                <div class="row justify-content-end align-items-center">
+                <div class="row justify-content-end align-items-center"> 
+                  <!-- Navigation menu -->
+                  <nav class="navbar navbar-expand-lg d-flex justify-content-end align-items-center">
+                    <button class="navbar-toggler navbar-toggler-right border-0" type="navGrid" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                      <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                      </svg>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                      <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                          <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" data-tippy-content="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="{{request.user.username}}" title="{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
+                        </li>
+                        <li class="nav-item">
+                          <form id="logout-form" action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                          <a id="logout-button" class="btn btn-sm btn-outline-danger" data-tippy-content="Sign out"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
+                          </form>
+                        </li>
+                          <script>
+                            const logoutButton = document.querySelector('#logout-button');
+
+                            logoutButton.addEventListener('click', () => {
+                              logoutButton.disabled = true;
+                              logoutButton.innerHTML = '<i class="spinner-border spinner-border-sm"></i> Logging out...';
+
+                              setTimeout(() => {
+                                document.getElementById('logout-form').submit();
+                              }, 2000); 
+                              });
+                          </script>
+                      </ul>
+                    </div>
+                  </nav>
+
+                  <script>
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
                   
+                    navbarToggler.addEventListener('click', () => {
+                      const isOpen = navbarToggler.getAttribute('data-nav-open') === 'true';
+                      navbarToggler.setAttribute('data-nav-open', !isOpen);
+                      navbarCollapse.classList.toggle('show', !isOpen);
+                    });
+
+                    document.addEventListener('click', (event) => {
+                          if (navbarCollapse.classList.contains('show') && !navbarToggler.contains(event.target)) {
+                              navbarCollapse.classList.remove('show');
+                          }
+                      });
+                  </script>
+
                   <!-- Search icon -->
                   <div class="search-icon-container">
                     <a class="search-icon" data-tippy-content="Show search"><i class="fas fa-search"></i></a>
@@ -468,63 +524,6 @@
                       document.getElementById("id_searchq").value = "{{query}}"
                   </script>
                 </div>
-
-                <!-- Navigation menu -->
-                <nav class="navbar navbar-expand-lg d-flex justify-content-end align-items-center">
-                  <button class="navbar-toggler navbar-toggler-right border-0" type="navGrid" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-                    <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
-                      <rect x="3" y="3" width="7" height="7"></rect>
-                      <rect x="14" y="3" width="7" height="7"></rect>
-                      <rect x="14" y="14" width="7" height="7"></rect>
-                      <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
-                  </button>
-                  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                        <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" data-tippy-content="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="{{request.user.username}}" title="{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
-                      </li>
-                      <li class="nav-item">
-                        <form id="logout-form" action="{% url 'logout' %}" method="POST">
-                          {% csrf_token %}
-                        <a id="logout-button" class="btn btn-sm btn-outline-danger" data-tippy-content="Sign out"><i class="fas fa-power-off" style="font-size:9px"></i> Logout</a>                          
-                        </form>
-                      </li>
-                        <script>
-                          const logoutButton = document.querySelector('#logout-button');
-
-                          logoutButton.addEventListener('click', () => {
-                            logoutButton.disabled = true;
-                            logoutButton.innerHTML = '<i class="spinner-border spinner-border-sm"></i> Logging out...';
-
-                            setTimeout(() => {
-                              document.getElementById('logout-form').submit();
-                            }, 2000); 
-                            });
-                        </script>
-                    </ul>
-                  </div>
-                </nav>
-
-                <script>
-                  const navbarToggler = document.querySelector('.navbar-toggler');
-                  const navbarCollapse = document.querySelector('.navbar-collapse');
-                
-                  navbarToggler.addEventListener('click', () => {
-                    const isOpen = navbarToggler.getAttribute('data-nav-open') === 'true';
-                    navbarToggler.setAttribute('data-nav-open', !isOpen);
-                    navbarCollapse.classList.toggle('show', !isOpen);
-                  });
-
-                  document.addEventListener('click', (event) => {
-                        if (navbarCollapse.classList.contains('show') && !navbarToggler.contains(event.target)) {
-                            navbarCollapse.classList.remove('show');
-                        }
-                    });
-                </script>
             {% else %}
               <nav class="navbar navbar-expand-lg d-flex justify-content-end align-items-center">
                 <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
