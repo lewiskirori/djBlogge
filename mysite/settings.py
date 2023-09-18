@@ -13,20 +13,24 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['dblo.up.railway.app', '127.0.0.1']
 
 if DEBUG:
     # During development only
+    
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#else
 
 # Application definition
 INSTALLED_APPS = [
     # My apps
+
     'personal',
     'account',
     'blog',
     
     # Django apps
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -102,15 +106,17 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
-# Media settings 
-MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 # Default primary key field type
@@ -118,7 +124,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CSRF verification
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://djblogge.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://dblo.up.railway.app']
 
 # Session timeout to 30 minutes (in seconds)
 SESSION_COOKIE_AGE = 1800
