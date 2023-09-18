@@ -1,9 +1,0 @@
-services:
-  web:
-    env:
-      DJANGO_SETTINGS_MODULE: "mysite.settings"
-    command: gunicorn mysite.wsgi:application --bind 0.0.0.0:5861 
-
-hooks:
-  build:
-    - python manage.py collectstatic --noinput
