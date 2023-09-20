@@ -34,9 +34,10 @@
     font-size: 16px;
     font-family: 'Josefin Sans', sans-serif;
     border: none;
+    color: inherit;
     border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: transparent;
     margin-bottom: 10px;
     }
 
@@ -135,7 +136,7 @@
                 {% csrf_token %}
 
                 <div class="form-group">
-                    <label for="id_title">Title:</label>
+                    <label for="id_title">Edit Title:</label>
                     <input class="form-control" type="text" name="title" id="id_title" placeholder="E.g. “Past for Future Generations”" value="{{ form.initial.title }}" required autofocus>
                 </div>
 

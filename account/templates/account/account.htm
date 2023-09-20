@@ -168,6 +168,7 @@
   font-family: 'Josefin Sans', sans-serif;
   transition: transform 0.3s ease, text-decoration 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   }
 
   .blog-posts li:hover {
@@ -339,7 +340,7 @@
           <ul>
             {% for post in blog_posts %}
               <a onclick="goToPost('{{ post.slug }}')" style="text-decoration: none;">
-                <li class="list-group-item" title="{{post}}">{{post}}</li>
+                <li class="list-group-item" data-tippy-content="{{post}}">{{post}}</li>
               </a>
             {% endfor %}
           </ul>
