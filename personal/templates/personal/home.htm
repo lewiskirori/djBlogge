@@ -28,33 +28,38 @@
 	}
 
 	.card {
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	border: 1px solid #fff;
 	}
 
 	.create-post-bar {
 	background-color: transparent;
-	margin-bottom:20px;
+	margin-bottom: 20px;
 	}
 
 	.create-post-btn {
-	padding: 10px 20px;
+	padding: 12px 24px;
 	background-color: #2e3339;
 	color: #ffffff;
 	font-family: 'Josefin Sans', sans-serif;
 	text-decoration: none;
-	border: none;
-	border-radius: 2px;
-	transition: background-color 0.2s;
+	border: 1px solid transparent;
+	border-radius: 50px;
+	transform: scale(1.1);
+	transition: all 0.4s ease;
 	font-size: 16px;
 	margin-top: 10px;
 	cursor: pointer;
 	outline: none;
 	}
 
-	.create-post-btn:hover {
-	color: #fff;
-	background-color: #1a1d20;
+	.create-post-btn:hover,
+	.create-post-btn:focus {
+	border: 1px solid;
+	border-color: transparent;  
+	color: inherit;
+	background-color: transparent;
+	box-shadow: 0 0 10px rgba(52, 152, 219, 1);
 	}
 
 	.left-column, 
@@ -94,8 +99,8 @@
 			<!-- Top 'create post' bar -->
 			<div class="d-lg-none mb-3">
 				<div class="card m-auto d-flex flex-column p-3 create-post-bar">
-					<img class="img-fluid d-block m-auto pb-2" src="{% static 'djBlogge-icon.png' %}" width="22" height="22">
-					<p class="lead">Ready to dive into your creative g9? Join our extraordinary content hub and let your imagination run wild. In this inclusive space, everyone is welcome. With our easy-to-use powerful features, you’ll be crafting fascinating posts and content in no time!</p>
+					<img class="img-fluid d-block m-auto pb-2" src="{% static 'djBlogge-icon.png' %}" alt="djBlogge_Logo" width="22" height="22">
+					<p class="lead">Ready to dive into your gifted g9? Join our extraordinary content hub and let your imagination run wild. In this inclusive space, everyone is welcome. With our easy-to-use powerful features, you’ll be composing fascinating posts and content in no time!</p>
 					<p class="m-auto">
 						<a class="create-post-btn" href="{% url 'blog:create' %}">
 							<i class="fas fa-pencil-alt"></i> Compose
@@ -127,8 +132,8 @@
 		<!-- Right 'create post' column  -->
 		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
 			<div class="card create-post-bar d-flex flex-column p-3" id="sticky-column">
-				<img class="img-fluid d-block m-auto pb-2" src="{% static 'djBlogge-icon.png' %}" width="42" height="42">
-				<p class="lead">Ready to dive into your creative g9? Join our extraordinary content hub and let your imagination run wild. In this inclusive space, everyone is welcome. With our easy-to-use powerful features, you’ll be crafting fascinating posts and content in no time!</p>
+				<img class="img-fluid d-block m-auto pb-2" src="{% static 'djBlogge-icon.png' %}" alt="djBlogge_Logo" width="42" height="42">
+				<p class="lead">Ready to dive into your gifted g9? Join our extraordinary content hub and let your imagination run wild. In this inclusive space, everyone is welcome. With our easy-to-use powerful features, you’ll be composing fascinating posts and content in no time!</p>
         		<p class="m-auto">
 					<a class="create-post-btn" href="{% url 'blog:create' %}">
 						<i class="fas fa-pencil-alt"></i> Compose

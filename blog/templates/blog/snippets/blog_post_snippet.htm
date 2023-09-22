@@ -78,21 +78,25 @@
     
     .unleash-Btn {
     background-color: #2e3339;
-    border: none;
+    border: 1px solid transparent;
     color: #fff;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 50px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    transform: scale(1.1);
     font-family: 'Josefin Sans', sans-serif;
     font-size: smaller;
     outline: none;
     }
     
-    .unleash-Btn:hover {
-    background-color: #1a1d20;
+    .unleash-Btn:hover,
+    .unleash-Btn:focus {
+    border: 1px solid;
+    border-color: inherit;  
+    background-color: transparent;
     text-decoration: none;
-    color: #fff;
+    color: inherit;
     }
     
     .card-footer {

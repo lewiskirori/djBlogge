@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title>Edit post | djBlogge</title>
+<title>Editing post | djBlogge</title>
 
 {% extends 'base.htm' %}
 
@@ -102,8 +102,9 @@
     font-family: 'Josefin Sans', sans-serif;
     text-decoration: none;
     border: none;
-    border-radius: 2px;
-    transition: background-color 0.2s;
+    border-radius: 50px;
+    transition: background-color 0.2s ease;
+    transform: scale(1.1);
     font-size: 16px;
     margin-top: 10px;
     cursor: pointer;
@@ -134,9 +135,12 @@
 
             <form class="create-form" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                <h2 style="text-align: center; margin-bottom: 20px; font-family: 'Josefin Sans',sans-serif; color: inherit;">
+                    Editing {{ form.initial.title }}
+                </h2>
 
                 <div class="form-group">
-                    <label for="id_title">Edit Title:</label>
+                    <label for="id_title">Title:</label>
                     <input class="form-control" type="text" name="title" id="id_title" placeholder="E.g. “Past for Future Generations”" value="{{ form.initial.title }}" required autofocus>
                 </div>
 

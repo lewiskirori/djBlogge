@@ -7,22 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alike&family=Arbutus+Slab&family=Josefin+Sans&family=Libre+Baskerville&family=Merriweather&family=Nunito:ital,wght@0,200;1,200;1,400;1,900&family=PT+Serif&family=Schibsted+Grotesk:wght@600&display=swap" rel="stylesheet">
-    <title>Page not found (404) | djBlogge</title>
+    <title>404 : Page not found | djBlogge</title>
     <style>
         body {
             font-family: 'Josefin Sans', sans-serif;
-            background-color: #212529;
-            color: #2e3339;
+            background-color: #2e3339;
+            color: #f5f5f5;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: #fff;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+            margin-top: 10%;
+            background-color: #2e3339;
             border-radius: 0 0 32px 32px;
             text-align: center;
         }
@@ -40,16 +37,15 @@
 
         .request-url {
             margin-top: 20px;
-            background-color: #f8f8f8;
+            background-color: transparent;
             padding: 10px;
             border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
         }
 
         .request-url p {
             font-size: 14px;
             margin: 0;
-            color: #555; 
+            color: #777; 
         }
 
         .url-text {
@@ -68,12 +64,17 @@
             background-color: rgba(0, 123, 255, 0.2);
             color: #007bff;
             transition: all 0.3s ease-in-out;
+            outline: none;
         }
 
         .home-link:hover {
             border: 1px solid #007bff;
             color: #007bff;
             background-color: rgba(0, 123, 255, 0.3);
+        }
+
+        .home-link:focus {
+            box-shadow: 0 0 5px #007bff;
         }
 
         ul {
@@ -94,10 +95,6 @@
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
             h1 {
                 font-size: 1.8rem;
             }
@@ -123,7 +120,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Oops! This page couldn't be found (404)</h1>
+        <h1>404 | Oops! This page couldn't be found</h1>
         <p>We're sorry, but the page you are looking for might have been removed or does not exist.</p>
         <p>Here are some things you can try:</p>
         <ul>

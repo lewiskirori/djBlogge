@@ -62,13 +62,13 @@
         cursor: pointer;
         transform: scale(1.1);
         transition: all 0.3s ease;
+        outline: none;
         }
 
-        .theme-button:hover {
+        .theme-button:hover,
+        .theme-button:focus {
         background-color: rgba(0, 123, 255, 0.4);
         border: none;
-        transform: scale(1.1);
-        transition: transform 0.2s ease-in-out;
         }
 
         .theme-button i {
@@ -152,18 +152,17 @@
         cursor: pointer;
         transition: all 0.3s ease;
         transform: scale(1.1);
+        outline: none;
         }
 
-        .back-to-top-btn:hover {
-        background-color: #1a1d20;
+        .back-to-top-btn:hover,
+        .back-to-top-btn:focus {
+        border: 1px solid;
+        border-color: inherit;  
+        background-color: transparent;
+        color: inherit;
+        box-shadow: 0 0 10px rgba(52, 152, 219, 1);
         }
-
-        .back-to-top-btn:active {
-        border: 1px solid #2e3339;
-        color: #2e3339;
-        background-color: #fff;
-        transition: transform 0.2s ease-in-out;        
-        } 
 
         .back-to-top-btn.show {
         display: block;
@@ -244,7 +243,7 @@
     <div id="preloader"></div>
     
     <!-- Scroll to top -->
-    <button class="back-to-top-btn" title="Scroll to Top">
+    <button class="back-to-top-btn" data-tippy-content="Scroll to top">
       <a class="fas fa-chevron-up"></a>
     </button>
     
