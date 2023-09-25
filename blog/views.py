@@ -52,37 +52,8 @@ def edit_blog_view(request, slug):
     
     blog_post = get_object_or_404(BlogPost, slug=slug)
 
-
-def unauthorized_action(request):
-    response = """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f5f5f5;
-                text-align: center;
-            }
-            .message-container {
-                background-color: #ffffff;
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-                display: inline-block;
-                margin-top: 100px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="message-container">
-            <h1>Oops!</h1>
-            <p>Sorry, you are not authorized to perform this action. This action is restricted to the post’s author.</p>
-        </div>
-    </body>
-    </html>
-    """
-    return HttpResponse(response)
+    if blog_post.author != user:
+        return HttpResponse("Oops! Sorry, you are not authorized to perform this action. This action is restricted to the post’s author.")
 
     if request.POST:
         form = UpdateBlogPostForm(request.POST or None, request.FILES or None, instance=blog_post)
