@@ -417,7 +417,11 @@
                           <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" data-tippy-content="Home"><i class="fas fa-home" style="font-size:9px"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" data-tippy-content="{{request.user.username}}" title="{{request.user.username}}"><i class="fas fa-user-alt" style="font-size:9px"></i> Profile</a>
+                          <a class="btn btn-sm btn-outline-info" href="{% url 'account' %}" 
+                            data-tippy-content="{{request.user.username}}" 
+                            title="{{request.user.username}}">
+                            <i class="fas fa-user-alt" style="font-size:9px"></i> Profile
+                          </a>
                         </li>
                         <li class="nav-item">
                           <form id="logout-form" action="{% url 'logout' %}" method="POST">

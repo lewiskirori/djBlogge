@@ -161,7 +161,13 @@
   font-family: 'Josefin Sans', sans-serif;
   }
 
-  .blog-posts li {
+  .blog-post-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  }
+
+  .blog-post-items .list-group-item {
   padding: 10px;
   border: 1px solid transparent;
   margin-bottom: 10px;
@@ -169,9 +175,11 @@
   transition: transform 0.3s ease, text-decoration 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  height: 100px;
+  overflow: hidden;
   }
 
-  .blog-posts li:hover {
+  .blog-post-items .list-group-item:hover {
   transform: scale(1.1);
   text-decoration: underline;
   }
@@ -325,25 +333,25 @@
           </button>
         </div>
 
-        <hr class="my-1" style="width: 90%; margin: 0 auto;height: 2px;">
+        <hr class="my-1" style="width: 90%; margin: 0 auto; height: 2px;">
 
         <div class="d-flex justify-content-end">
-          <a href="{% url 'password_change' %}" style="font-family:'Josefin Sans',sans-serif;font-weight:bolder;" class="login-link">Change Password</a>
+          <a href="{% url 'password_change' %}" style="font-family: 'Josefin Sans',sans-serif;" class="login-link">Change Password</a>
         </div>
     </form>
 
     <div class="container mt-4 p-4">
       <div class="row">
         <div class="blog-posts">
-          <h3 class="mb-3 font-weight-normal">Authored posts</h3>
+          <h3 class="mb-3 font-weight-normal">Authored posts <i class="fa fa-paper-plane"></i></h3>
           {% if blog_posts %}
-          <ul>
-            {% for post in blog_posts %}
-              <a onclick="goToPost('{{ post.slug }}')" style="text-decoration: none;">
-                <li class="list-group-item" data-tippy-content="{{post}}">{{post}}</li>
-              </a>
-            {% endfor %}
-          </ul>
+            <div class="blog-post-items">
+              {% for post in blog_posts %}
+                <a onclick="goToPost('{{ post.slug }}')" style="text-decoration: none;">
+                  <div class="list-group-item" data-tippy-content="{{ post }}">{{ post|truncatechars:25 }}</div>
+                </a>
+              {% endfor %}
+            </div>
           {% else %}
           <p>
             “ At the moment, you don’t have any posts. <a href="{% url 'blog:create' %}" class="login-link" style="font-style: italic; color: #007bff;">

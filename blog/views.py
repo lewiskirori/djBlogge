@@ -60,7 +60,7 @@ def edit_blog_view(request, slug):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            context['success_message'] = "Masterpiece post was successfully updated!"
+            context['success_message'] = "Post was updated"
             blog_post = obj
             return redirect('blog:detail', slug=blog_post.slug)
 
