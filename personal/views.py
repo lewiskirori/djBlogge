@@ -12,7 +12,7 @@ def home_screen_view(request):
 
     query = ""
     if request.GET:
-        query = request.GET.get('search_q', '')
+        query = request.GET.get('search/q', '')
         context['query'] = str(query)
 
     blog_posts = sorted(get_blog_queryset(query), key=attrgetter('date_updated'), reverse=True)
