@@ -1,2 +1,1 @@
-# Specify that *.html files should use LF line endings on all systems
 *.html text eol=lf
