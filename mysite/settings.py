@@ -61,9 +61,6 @@ TEMPLATES = [
     },
 ]
 
-HTTP404_PAGE_TEMPLATE = '404/404.htm'
-HTTP500_PAGE_TEMPLATE = '500/500.htm'
-
 AUTH_USER_MODEL = 'account.Account'
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
