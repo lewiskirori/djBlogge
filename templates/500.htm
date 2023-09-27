@@ -32,6 +32,13 @@
         margin-top: 10px;
         }
 
+        .please-try {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #777;
+        font-weight: bold;  
+        }
+
         .reload-button {
         text-decoration: none;
         padding: 10px 20px;
@@ -43,7 +50,7 @@
         background-color: rgba(0, 123, 255, 0.2);
         color: #007bff;
         transition: all 0.3s ease-in-out;
-        margin-top: 20px;
+        margin-top: 10px;
         cursor: pointer;
         outline: none;
         }
@@ -82,8 +89,8 @@
 <body>
 <div class="error-container">
     <h1>500 | Internal Server error</h1>
-    <p>Oops! Something went wrong on our end. We’re working to fix it.</p>
-    <p>Please try refreshing the page in a moment.</p>
+    <p>Oops! Something went wrong on our end. We're working to fix it.</p>
+    <p class="please-try">Please try refreshing the page in a moment.</p>
     <button class="m-auto btn reload-button" onclick="location.reload();">Refresh</button>
 </div>
 </body>
