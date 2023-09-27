@@ -2,12 +2,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import handler404
+from django.conf.urls import handler404, handler500
 from django.contrib.auth import views as auth_views
 
 from personal.views import (
     home_screen_view,
 )
+from mysite.views import custom_404, custom_500
 
 from account.views import(
     registration_view,
@@ -17,7 +18,8 @@ from account.views import(
     must_authenticate_view,
 )
 
-handler404 = 'mysite.views.custom_404'
+handler404 = custom_404
+handler500 = custom_500
 
 urlpatterns = [
     path('', home_screen_view, name="home"),
