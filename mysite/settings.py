@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1', 'localhost']
 
 if DEBUG:
     # During development only
