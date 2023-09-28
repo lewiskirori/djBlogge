@@ -10,10 +10,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1', 'localhost', '*']
 
 if DEBUG:
-    # During development only
+    # During dev only
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
@@ -98,15 +98,15 @@ TIME_ZONE = 'Africa/Nairobi'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static & Media files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
-
-# Media settings 
 MEDIA_URL = '/media/'
+
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 # Default primary key field type
