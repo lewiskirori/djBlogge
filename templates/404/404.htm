@@ -132,17 +132,6 @@
             <p class="url-text">Request URL:</p>
             <p>{{ request.build_absolute_uri }}</p>
         </div>
-        <p class="footer">&copy; <span id="current_year"></span> djBlogge Hub. All rights reserved.</p>
     </div>
-
-    <script>
-      var currentYear = new Date().getFullYear();
-      var currentYearElem = document.getElementById('current_year');
-      if (currentYear && currentYear >= 2020) {
-          currentYearElem.innerHTML = currentYear;
-      } else {
-          currentYearElem.innerHTML = 'Present';
-      }
-    </script>
 </body>
 </html>
