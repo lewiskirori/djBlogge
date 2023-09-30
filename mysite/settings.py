@@ -118,5 +118,6 @@ CSRF_TRUSTED_ORIGINS = ['https://djblogge.up.railway.app']
 
 # Session timeout to 30 minutes (in seconds)
 SESSION_COOKIE_AGE = 1800
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
