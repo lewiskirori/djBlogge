@@ -10,7 +10,6 @@ from personal.views import (
     home_screen_view,
 )
 from mysite.views import custom_404, custom_500
-
 from account.views import(
     registration_view,
     logout_view,
@@ -18,6 +17,10 @@ from account.views import(
     account_view,
     must_authenticate_view,
 )
+
+admin.site.site_title = 'djBlogge Mgr.'
+admin.site.site_header = 'djBlogge A. Console'
+admin.site.index_title = 'Webcare administration'
 
 handler404 = custom_404
 handler500 = custom_500
