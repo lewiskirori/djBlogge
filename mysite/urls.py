@@ -18,12 +18,11 @@ from account.views import(
     must_authenticate_view,
 )
 
+handler404 = custom_404
+handler500 = custom_500
 admin.site.site_title = 'djBlogge Mgr.'
 admin.site.site_header = 'djBlogge A. Console'
 admin.site.index_title = 'Webcare administration'
-
-handler404 = custom_404
-handler500 = custom_500
 
 urlpatterns = [
     path('', home_screen_view, name="home"),
