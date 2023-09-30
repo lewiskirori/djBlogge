@@ -21,7 +21,7 @@ from account.views import(
 handler404 = custom_404
 handler500 = custom_500
 admin.site.site_title = 'djBlogge Mgr.'
-admin.site.site_header = 'djBlogge A. Console'
+admin.site.site_header = 'djBlogge (A) Console'
 admin.site.index_title = 'Webcare administration'
 
 urlpatterns = [
