@@ -113,6 +113,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
+PASSWORD_RESET_SUBJECT_TEMPLATE = 'registration/password_reset_subject.htm'
+PASSWORD_RESET_EMAIL_TEMPLATE = 'registration/password_reset_email.htm'
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
