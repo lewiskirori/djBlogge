@@ -11,6 +11,9 @@ settings_local.py
 
 db.sqlite3
 
+media/
+static/
+
 *.log
 
 .idea/
