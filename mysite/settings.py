@@ -116,6 +116,9 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Token generator
+PASSWORD_RESET_TOKEN_GENERATOR = 'mysite.tokens.custom_token_generator'
+
 # CSRF verification
 CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://djblogge.up.railway.app']
