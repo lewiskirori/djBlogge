@@ -49,7 +49,13 @@ urlpatterns = [
             name='password_reset'),
 
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.htm'), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.htm'), name='password_reset_confirm'),
+    
+    path(
+        'reset/<str:uidb64>/<str:token>/', 
+        auth_views.PasswordResetConfirmView.as_view(
+            template_name='registration/password_reset_confirm.htm'
+            ), name='password_reset_confirm'),
+
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.htm'), name='password_reset_complete'),
 
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),    
