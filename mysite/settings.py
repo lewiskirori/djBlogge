@@ -116,10 +116,6 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Tokens
-PASSWORD_RESET_TOKEN_TIMEOUT = 3600
-PASSWORD_RESET_TOKEN_LENGTH = 64
-
 # CSRF verification
 CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://djblogge.up.railway.app']
