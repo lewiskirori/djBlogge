@@ -5,7 +5,6 @@ from django.urls import path, include, re_path
 from django.conf.urls import handler404, handler500
 from django.contrib.auth import views as auth_views
 from django.views.static import serve
-
 from personal.views import (
     home_screen_view,
 )
@@ -51,7 +50,6 @@ urlpatterns = [
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.htm'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.htm'), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.htm'), name='password_reset_complete'),
-
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),    
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
