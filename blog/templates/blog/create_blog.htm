@@ -136,6 +136,7 @@ font-size: 24px;
 }
 
 .view-post-link {
+text-decoration: none;
 margin-left: 10px;
 color: #155724;
 transition: background-color 0.3s ease, border-radius 0.3s ease;
@@ -144,7 +145,7 @@ border-radius: 5px;
 }
 
 .view-post-link:hover {
-font-weight: bold;
+text-decoration: underline;
 color: #155724;
 }
 </style>
@@ -161,7 +162,7 @@ color: #155724;
 <div class="container">
     <div class="row">
         <div class="col-lg-7 offset-lg-1">
-            <form class="create-form" method="post" enctype="multipart/form-data">
+            <form class="create-form" method="post" enctype="multipart/form-data" onsubmit="submitButton.disabled = true; submitButton.innerHTML = '<i class=\'spinner-border spinner-border-sm\'></i> Posting...';">
                 {% csrf_token %}
                 <h2 style="text-align: center; margin-bottom: 30px; font-family: 'Josefin Sans',sans-serif; color: inherit;">
                     Create a New Post
@@ -186,7 +187,7 @@ color: #155724;
                     </div>
                 </div>
 
-                <button class="submit-button" type="submit">
+                <button class="submit-button" type="submit" name="submitButton">
                     <i class="fas fa-paper-plane"></i> POST
                 </button>
             </form>
