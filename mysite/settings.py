@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1', 'localhost', '*']
+ALLOWED_HOSTS = ['djblogge.vercel.app', '127.0.0.1', 'localhost', '*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -64,11 +64,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        'NAME': os.environ.get('POSTGRES_DATABASE'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': os.environ.get('POSTGRES_DB_PORT'),
     }
 }
 
@@ -121,7 +121,7 @@ PASSWORD_RESET_TOKEN_GENERATOR = 'mysite.tokens.custom_token_generator'
 
 # CSRF verification
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://djblogge.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://djblogge.vercel.app']
 
 # Session timeout to 30 minutes (in seconds)
 SESSION_COOKIE_AGE = 1800

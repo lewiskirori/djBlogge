@@ -7,7 +7,7 @@
 
 <style type="text/css">
     .create-form {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     max-width: 500px;
     margin: 50px auto;
     margin-top: 20px;
@@ -33,7 +33,7 @@
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     border: none;
     color: inherit;
     border-radius: 5px;
@@ -59,7 +59,7 @@
     text-align: center;
     cursor: pointer;
     margin-bottom: 20px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     }
 
     .image-group:hover .image {
@@ -100,7 +100,7 @@
     padding: 10px 20px;
     background-color: #2e3339;
     color: #ffffff;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     text-decoration: none;
     border: none;
     border-radius: 50px;
@@ -136,7 +136,7 @@
 
             <form class="create-form" method="post" enctype="multipart/form-data" onsubmit="submitButton.disabled = true; submitButton.innerHTML = '<i class=\'spinner-border spinner-border-sm\'></i> Updating...';">
                 {% csrf_token %}
-                <h2 style="text-align: center; margin-bottom: 20px; font-family: 'Josefin Sans',sans-serif; color: inherit;">
+                <h2 style="text-align: center; margin-bottom: 20px; font-family: 'Jost',sans-serif; color: inherit;">
                     Editing {{ form.initial.title }}
                 </h2>
 
