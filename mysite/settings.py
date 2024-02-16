@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['djblogge.up.railway.app', '127.0.0.1', 'localhost', '*']
+ALLOWED_HOSTS = ['djblogge.vercel.app', '127.0.0.1', 'localhost', '*']
 
 # Application definition
 INSTALLED_APPS = [
